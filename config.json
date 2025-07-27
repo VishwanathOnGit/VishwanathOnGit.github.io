@@ -1,0 +1,29 @@
+{
+  "site": {
+    "title": "Creative Portfolio",
+    "description": "Modern portfolio showcasing creative design and development work",
+    "author": "Portfolio Owner",
+    "url": "https://yourusername.github.io/portfolio",
+    "email": "hello@portfolio.com",
+    "phone": "+1 (555) 123-4567",
+    "location": "San Francisco, CA"
+  },
+  "social": {
+    "github": "https://github.com/yourusername",
+    "linkedin": "https://linkedin.com/in/yourusername",
+    "twitter": "https://twitter.com/yourusername",
+    "dribbble": "https://dribbble.com/yourusername"
+  },
+  "features": {
+    "animations": true,
+    "darkMode": false,
+    "analytics": false,
+    "contactForm": true
+  },
+  "colors": {
+    "primary": "#667eea",
+    "secondary": "#764ba2",
+    "accent": "#f093fb",
+    "highlight": "#f5576c"
+  }
+}
