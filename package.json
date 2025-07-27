@@ -1,32 +1,46 @@
 {
-  "name": "portfolio",
-  "version": "0.1.0",
-  "private": true,
+  "name": "creative-portfolio",
+  "version": "1.0.0",
+  "description": "A modern, responsive portfolio website with beautiful animations and mobile-first design",
+  "main": "index.html",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "python -m http.server 8000",
+    "serve": "python3 -m http.server 8000",
+    "dev": "live-server --port=3000",
+    "build": "echo 'This is a static site - no build process required'",
+    "test": "echo 'No tests specified'",
+    "lint:html": "htmlhint index.html",
+    "lint:css": "stylelint styles.css",
+    "lint:js": "eslint script.js"
   },
-  "dependencies": {
-    "clsx": "^2.1.1",
-    "framer-motion": "^12.23.9",
-    "lucide-react": "^0.526.0",
-    "next": "15.4.4",
-    "next-themes": "^0.4.6",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
-    "tailwind-merge": "^3.3.1"
+  "keywords": [
+    "portfolio",
+    "website",
+    "responsive",
+    "tailwind",
+    "css",
+    "javascript",
+    "html5",
+    "animations",
+    "mobile-first",
+    "accessibility"
+  ],
+  "author": "Portfolio Owner",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/username/portfolio.git"
   },
+  "homepage": "https://username.github.io/portfolio",
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "15.4.4",
-    "tailwindcss": "^4",
-    "typescript": "^5"
-  }
+    "live-server": "^1.2.2",
+    "htmlhint": "^1.1.4",
+    "stylelint": "^15.10.0",
+    "eslint": "^8.50.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
 }
