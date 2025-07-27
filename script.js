@@ -3,6 +3,7 @@ const mobileMenuButton = document.getElementById('mobile-menu-button');
 const mobileMenu = document.getElementById('mobile-menu');
 const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
 const contactForm = document.getElementById('contact-form');
+const navbar = document.getElementById('navbar');
 
 // Mobile Menu Toggle
 mobileMenuButton.addEventListener('click', () => {
@@ -40,6 +41,22 @@ navLinks.forEach(link => {
     });
 });
 
+// Navbar Scroll Effect
+function updateNavbar() {
+    const scrollTop = window.pageYOffset;
+    
+    if (scrollTop > 100) {
+        navbar.classList.remove('navbar-transparent');
+        navbar.classList.add('navbar-solid');
+    } else {
+        navbar.classList.remove('navbar-solid');
+        navbar.classList.add('navbar-transparent');
+    }
+}
+
+// Initialize navbar
+navbar.classList.add('navbar-transparent');
+
 // Scroll Progress Indicator
 function updateScrollProgress() {
     const scrollTop = window.pageYOffset;
@@ -48,7 +65,10 @@ function updateScrollProgress() {
     document.querySelector('.scroll-indicator').style.width = scrollPercent + '%';
 }
 
-window.addEventListener('scroll', updateScrollProgress);
+window.addEventListener('scroll', () => {
+    updateScrollProgress();
+    updateNavbar();
+});
 
 // Intersection Observer for Animations
 const observerOptions = {
@@ -106,27 +126,40 @@ const counterObserver = new IntersectionObserver((entries) => {
 
 counterObserver.observe(aboutSection);
 
-// Typewriter Effect Enhancement
-function enhanceTypewriter() {
-    const typewriterElement = document.querySelector('.typewriter');
-    if (typewriterElement) {
-        const text = typewriterElement.textContent;
-        typewriterElement.textContent = '';
+// TypewriterJS Effect Implementation
+function initializeTypewriter() {
+    const typewriterElement = document.getElementById('typewriter-text');
+    
+    if (typewriterElement && typeof Typewriter !== 'undefined') {
+        const typewriter = new Typewriter(typewriterElement, {
+            loop: true,
+            delay: 100,
+            deleteSpeed: 50,
+            cursor: '|' // Back to traditional pipe cursor
+        });
         
-        setTimeout(() => {
-            typewriterElement.style.width = '0';
-            typewriterElement.style.animation = 'none';
-            
-            let i = 0;
-            const typeInterval = setInterval(() => {
-                typewriterElement.textContent += text.charAt(i);
-                i++;
-                if (i >= text.length) {
-                    clearInterval(typeInterval);
-                    typewriterElement.style.borderRight = 'none';
-                }
-            }, 100);
-        }, 1000);
+        typewriter
+            .typeString('Developer')
+            .pauseFor(2000)
+            .deleteAll()
+            .typeString('Designer')
+            .pauseFor(2000)
+            .deleteAll()
+            .typeString('Innovator')
+            .pauseFor(2000)
+            .deleteAll()
+            .typeString('Creator')
+            .pauseFor(2000)
+            .deleteAll()
+            .typeString('Problem Solver')
+            .pauseFor(2000)
+            .deleteAll()
+            .start();
+    } else {
+        // Fallback if TypewriterJS doesn't load
+        if (typewriterElement) {
+            typewriterElement.textContent = 'Developer';
+        }
     }
 }
 
@@ -307,6 +340,26 @@ function manageFocus() {
 document.addEventListener('DOMContentLoaded', () => {
     respectReducedMotion();
     manageFocus();
+    
+    // Initialize TypewriterJS with a small delay to ensure the library is loaded
+    setTimeout(() => {
+        initializeTypewriter();
+    }, 1000);
+    
+    // Add scroll to next section functionality for the scroll indicator
+    const scrollIndicator = document.querySelector('.absolute.bottom-8 i.fa-chevron-down');
+    if (scrollIndicator) {
+        scrollIndicator.parentElement.addEventListener('click', () => {
+            const aboutSection = document.getElementById('about');
+            if (aboutSection) {
+                aboutSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+        scrollIndicator.parentElement.style.cursor = 'pointer';
+    }
     
     // Add loading animation
     document.body.classList.add('opacity-0');

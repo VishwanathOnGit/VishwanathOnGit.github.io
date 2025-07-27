@@ -1,0 +1,171 @@
+/* =========================================
+   PORTFOLIO THEME CONFIGURATION
+   =========================================
+   
+   This file contains all color variables for the entire website.
+   To change the color scheme, simply modify the values in the :root section.
+   
+   Usage Instructions:
+   1. To switch to a different color scheme, uncomment one of the theme sections below
+   2. Or create your own theme by modifying the color values in :root
+   3. All colors throughout the site will automatically update
+*/
+
+/* ===== ALTERNATIVE THEME: PURPLE MODERN ===== */
+/*
+:root {
+    --primary-dark: #7c3aed;
+    --primary-darker: #6d28d9;
+    --primary-medium: #8b5cf6;
+    --primary-light: #a78bfa;
+    --gradient-primary: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+    --gradient-heading: linear-gradient(90deg, #7c3aed, #ec4899);
+    --gradient-accent: linear-gradient(90deg, #f59e0b, #ec4899);
+    --gradient-button: linear-gradient(90deg, #7c3aed, #ec4899);
+    --gradient-button-hover: linear-gradient(90deg, #6d28d9, #db2777);
+    --hover-primary: #a78bfa;
+    --focus-ring: #7c3aed;
+    --skill-icon-bg: #7c3aed;
+    --skill-icon-bg-secondary: #ec4899;
+    --project-link-color: #7c3aed;
+    --project-link-hover: #6d28d9;
+    --stats-color: #7c3aed;
+}
+*/
+
+/* ===== ALTERNATIVE THEME: BLUE PROFESSIONAL ===== */
+/*
+:root {
+    --primary-dark: #1e40af;
+    --primary-darker: #1e3a8a;
+    --primary-medium: #3b82f6;
+    --primary-light: #60a5fa;
+    --gradient-primary: linear-gradient(-45deg, #1e40af, #1e3a8a, #3b82f6, #60a5fa);
+    --gradient-heading: linear-gradient(90deg, #1e40af, #3b82f6);
+    --gradient-accent: linear-gradient(90deg, #f59e0b, #3b82f6);
+    --gradient-button: linear-gradient(90deg, #1e40af, #3b82f6);
+    --gradient-button-hover: linear-gradient(90deg, #1e3a8a, #2563eb);
+    --hover-primary: #60a5fa;
+    --focus-ring: #3b82f6;
+    --skill-icon-bg: #1e40af;
+    --skill-icon-bg-secondary: #3b82f6;
+    --project-link-color: #1e40af;
+    --project-link-hover: #1e3a8a;
+    --stats-color: #1e40af;
+}
+*/
+
+/* ===== ALTERNATIVE THEME: CYAN OCEAN ===== */
+:root {
+    /* Primary Brand Colors */
+    --primary-dark: #0891b2;        /* Cyan 600 */
+    --primary-darker: #0e7490;      /* Cyan 700 */
+    --primary-medium: #06b6d4;      /* Cyan 500 */
+    --primary-light: #22d3ee;       /* Cyan 400 */
+    
+    /* Gray Scale Palette */
+    --gray-50: #fafafa;
+    --gray-100: #f5f5f5;
+    --gray-200: #e5e5e5;
+    --gray-300: #d4d4d4;
+    --gray-400: #a3a3a3;
+    --gray-500: #737373;
+    --gray-600: #525252;
+    --gray-700: #404040;
+    --gray-800: #262626;
+    --gray-900: #171717;
+    
+    /* Accent Colors */
+    --accent-yellow: #f59e0b;        /* Warm contrast */
+    --accent-blue: #3b82f6;
+    --accent-green: #10b981;
+    --accent-red: #ef4444;
+    --accent-purple: #8b5cf6;
+    --accent-pink: #ec4899;
+    --accent-cyan: #06b6d4;          /* Primary cyan */
+    --accent-teal: #14b8a6;          /* Complementary teal */
+    --accent-orange: #f97316;        /* Warm complement */
+    
+    /* Background Colors */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f0fdff;         /* Very light cyan */
+    --bg-dark: #164e63;              /* Dark cyan */
+    --bg-darker: #083344;            /* Darker cyan */
+    
+    /* Text Colors */
+    --text-primary: #0f172a;         /* Dark slate */
+    --text-secondary: #475569;       /* Slate 600 */
+    --text-light: #94a3b8;           /* Slate 400 */
+    --text-white: #ffffff;
+    
+    /* Border & Outline Colors */
+    --border-light: rgba(34, 211, 238, 0.3);  /* Light cyan with opacity */
+    --border-gray: #e2e8f0;
+    --border-dark: #374151;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(-45deg, #0891b2, #0e7490, #06b6d4, #22d3ee);
+    --gradient-text: linear-gradient(90deg, #0891b2, #22d3ee);
+    --gradient-heading: linear-gradient(90deg, #0891b2, #06b6d4);
+    --gradient-accent: linear-gradient(90deg, #f97316, #06b6d4);
+    --gradient-button: linear-gradient(90deg, #0891b2, #06b6d4);
+    --gradient-button-hover: linear-gradient(90deg, #0e7490, #0891b2);
+    
+    /* Interactive States */
+    --hover-primary: #67e8f9;        /* Cyan 300 */
+    --hover-secondary: var(--gray-800);
+    --hover-accent: var(--accent-orange);
+    --focus-ring: #06b6d4;           /* Cyan 500 */
+    --focus-ring-opacity: 0.5;
+    
+    /* Component-Specific Colors */
+    --navbar-text: var(--text-white);
+    --navbar-hover: #67e8f9;         /* Light cyan for hover */
+    --button-primary-bg: var(--text-white);
+    --button-primary-text: #0891b2;  /* Cyan text on white */
+    --button-secondary-bg: transparent;
+    --button-secondary-text: var(--text-white);
+    --button-secondary-border: var(--text-white);
+    --card-bg: var(--bg-primary);
+    --card-shadow: rgba(8, 145, 178, 0.15);  /* Cyan shadow */
+    --form-bg: rgba(34, 211, 238, 0.1);      /* Light cyan form bg */
+    --form-border: var(--border-light);
+    --form-placeholder: #94a3b8;
+    --skill-icon-bg: #0891b2;        /* Cyan skill icons */
+    --skill-icon-bg-secondary: #06b6d4;
+    --project-link-color: #0891b2;   /* Cyan project links */
+    --project-link-hover: #0e7490;   /* Darker cyan on hover */
+    --stats-color: #0891b2;          /* Cyan statistics */
+}
+
+
+
+/* ===== UTILITY CLASSES FOR EASY COLOR APPLICATION ===== */
+.text-theme-primary { color: var(--text-primary); }
+.text-theme-secondary { color: var(--text-secondary); }
+.text-theme-white { color: var(--text-white); }
+.bg-theme-primary { background-color: var(--bg-primary); }
+.bg-theme-secondary { background-color: var(--bg-secondary); }
+.bg-theme-dark { background-color: var(--bg-dark); }
+.border-theme-light { border-color: var(--border-light); }
+.border-theme-gray { border-color: var(--border-gray); }
+
+/* Gradient text utilities */
+.gradient-text-heading {
+    background: var(--gradient-heading);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-accent {
+    background: var(--gradient-accent);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Hover utilities */
+.hover-theme-primary:hover { color: var(--hover-primary); }
+.hover-theme-secondary:hover { color: var(--hover-secondary); }
+.focus-theme-ring:focus { box-shadow: 0 0 0 2px var(--focus-ring); }
