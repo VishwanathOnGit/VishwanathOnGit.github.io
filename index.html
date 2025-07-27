@@ -28,6 +28,9 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23667eea'/><text y='80' font-size='80' fill='white'>P</text></svg>">
     
+    <!-- Theme Configuration CSS -->
+    <link rel="stylesheet" href="theme-config.css">
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -37,7 +40,94 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
+    <!-- TypewriterJS -->
+    <script src="https://cdn.jsdelivr.net/npm/typewriter-effect@2.21.0/dist/core.js"></script>
+    
     <style>
+        /* ===== CENTRALIZED COLOR SYSTEM ===== */
+        :root {
+            /* Primary Colors */
+            --primary-dark: #000000;
+            --primary-darker: #1a1a1a;
+            --primary-medium: #2c2c2c;
+            --primary-light: #404040;
+            
+            /* Gray Scale */
+            --gray-100: #f5f5f5;
+            --gray-200: #e5e5e5;
+            --gray-300: #d4d4d4;
+            --gray-400: #a3a3a3;
+            --gray-500: #737373;
+            --gray-600: #525252;
+            --gray-700: #404040;
+            --gray-800: #262626;
+            --gray-900: #171717;
+            
+            /* Accent Colors */
+            --accent-yellow: #f59e0b;
+            --accent-blue: #3b82f6;
+            --accent-green: #10b981;
+            --accent-red: #ef4444;
+            
+            /* Background Colors */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f9fafb;
+            --bg-dark: #111827;
+            --bg-darker: #000000;
+            
+            /* Text Colors */
+            --text-primary: #111827;
+            --text-secondary: #6b7280;
+            --text-light: #9ca3af;
+            --text-white: #ffffff;
+            
+            /* Border Colors */
+            --border-light: rgba(255, 255, 255, 0.2);
+            --border-gray: #e5e7eb;
+            
+            /* Gradient Colors */
+            --gradient-primary: linear-gradient(-45deg, var(--primary-dark), var(--primary-darker), var(--primary-medium), var(--primary-light));
+            --gradient-text: linear-gradient(90deg, var(--gray-600), var(--text-white));
+            --gradient-heading: linear-gradient(90deg, var(--gray-600), var(--text-white));
+            --gradient-accent: linear-gradient(90deg, var(--accent-yellow), var(--gray-400));
+            
+            /* Interactive States */
+            --hover-primary: var(--gray-300);
+            --hover-secondary: var(--gray-800);
+            --focus-ring: var(--gray-500);
+            
+            /* Component Colors */
+            --button-primary-bg: var(--text-white);
+            --button-primary-text: var(--primary-dark);
+            --button-secondary-bg: transparent;
+            --button-secondary-text: var(--text-white);
+            --button-secondary-border: var(--text-white);
+            
+            /* Card Colors */
+            --card-bg: var(--bg-primary);
+            --card-shadow: rgba(0, 0, 0, 0.1);
+            
+            /* Form Colors */
+            --form-bg: rgba(255, 255, 255, 0.1);
+            --form-border: var(--border-light);
+            --form-placeholder: #d1d5db;
+        }
+        
+        /* Dark theme alternative - uncomment to switch */
+        /*
+        :root {
+            --primary-dark: #7c3aed;
+            --primary-darker: #6d28d9;
+            --primary-medium: #8b5cf6;
+            --primary-light: #a78bfa;
+            --gradient-primary: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            --gradient-heading: linear-gradient(90deg, #7c3aed, #ec4899);
+            --gradient-accent: linear-gradient(90deg, #f59e0b, #ec4899);
+            --hover-primary: #a78bfa;
+            --focus-ring: #7c3aed;
+        }
+        */
+        
         * {
             font-family: 'Inter', sans-serif;
         }
@@ -47,7 +137,7 @@
         }
         
         .gradient-bg {
-            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            background: var(--gradient-primary);
             background-size: 400% 400%;
             animation: gradientShift 15s ease infinite;
         }
@@ -100,22 +190,6 @@
             transform: translateX(0);
         }
         
-        .typewriter {
-            overflow: hidden;
-            border-right: 3px solid #f59e0b;
-            white-space: nowrap;
-            animation: typing 3s steps(40) 1s 1 normal both, blinking 1s infinite;
-        }
-        
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-        
-        @keyframes blinking {
-            50% { border-color: transparent; }
-        }
-        
         .card-hover {
             transition: all 0.3s ease;
         }
@@ -154,9 +228,59 @@
             left: 0;
             width: 0%;
             height: 4px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
+            background: var(--gradient-text);
             z-index: 1000;
             transition: width 0.25s ease;
+        }
+        
+        .navbar-transparent {
+            background: transparent;
+        }
+        
+        .navbar-solid {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-solid .nav-link {
+            color: #374151 !important;
+        }
+        
+        .navbar-solid .nav-link:hover {
+            color: var(--hover-primary) !important;
+        }
+        
+        .navbar-solid .mobile-nav-link {
+            color: #374151 !important;
+        }
+        
+        .navbar-solid .mobile-nav-link:hover {
+            color: var(--hover-primary) !important;
+        }
+        
+        .navbar-solid #mobile-menu-button {
+            color: #374151 !important;
+        }
+        
+        .navbar-solid #mobile-menu-button:hover {
+            color: var(--hover-primary) !important;
+        }
+        
+        /* TypewriterJS cursor styling */
+        .Typewriter__cursor {
+            color: var(--accent-yellow) !important;
+            font-weight: 900 !important;
+            font-size: 0.9em !important;
+            text-shadow: 0 0 3px var(--accent-yellow) !important;
+            transform: scaleX(0.2) !important;
+            display: inline-block !important;
+            margin-left: 2px !important;
+        }
+        
+        .Typewriter__wrapper {
+            display: inline-block;
         }
     </style>
     
@@ -178,27 +302,27 @@
     <div class="scroll-indicator"></div>
     
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 glass">
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex-shrink-0">
-                    <span class="text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Portfolio</span>
+                    <span class="text-xl font-bold" style="background: var(--gradient-heading); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Portfolio</span>
                 </div>
                 
                 <!-- Desktop Menu -->
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#home" class="nav-link text-white hover:text-purple-300 transition-colors duration-300">Home</a>
-                        <a href="#about" class="nav-link text-white hover:text-purple-300 transition-colors duration-300">About</a>
-                        <a href="#projects" class="nav-link text-white hover:text-purple-300 transition-colors duration-300">Projects</a>
-                        <a href="#skills" class="nav-link text-white hover:text-purple-300 transition-colors duration-300">Skills</a>
-                        <a href="#contact" class="nav-link text-white hover:text-purple-300 transition-colors duration-300">Contact</a>
+                        <a href="#home" class="nav-link text-white transition-colors duration-300" style="color: var(--navbar-text);" onmouseover="this.style.color='var(--navbar-hover)'" onmouseout="this.style.color='var(--navbar-text)'">Home</a>
+                        <a href="#about" class="nav-link text-white transition-colors duration-300" style="color: var(--navbar-text);" onmouseover="this.style.color='var(--navbar-hover)'" onmouseout="this.style.color='var(--navbar-text)'">About</a>
+                        <a href="#projects" class="nav-link text-white transition-colors duration-300" style="color: var(--navbar-text);" onmouseover="this.style.color='var(--navbar-hover)'" onmouseout="this.style.color='var(--navbar-text)'">Projects</a>
+                        <a href="#skills" class="nav-link text-white transition-colors duration-300" style="color: var(--navbar-text);" onmouseover="this.style.color='var(--navbar-hover)'" onmouseout="this.style.color='var(--navbar-text)'">Skills</a>
+                        <a href="#contact" class="nav-link text-white transition-colors duration-300" style="color: var(--navbar-text);" onmouseover="this.style.color='var(--navbar-hover)'" onmouseout="this.style.color='var(--navbar-text)'">Contact</a>
                     </div>
                 </div>
                 
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-white hover:text-purple-300 focus:outline-none">
+                    <button id="mobile-menu-button" class="text-white hover:text-gray-300 focus:outline-none">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
@@ -207,11 +331,11 @@
             <!-- Mobile Menu -->
             <div id="mobile-menu" class="md:hidden hidden">
                 <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white bg-opacity-10 backdrop-blur-lg rounded-lg mt-2">
-                    <a href="#home" class="mobile-nav-link block px-3 py-2 text-white hover:text-purple-300 transition-colors duration-300">Home</a>
-                    <a href="#about" class="mobile-nav-link block px-3 py-2 text-white hover:text-purple-300 transition-colors duration-300">About</a>
-                    <a href="#projects" class="mobile-nav-link block px-3 py-2 text-white hover:text-purple-300 transition-colors duration-300">Projects</a>
-                    <a href="#skills" class="mobile-nav-link block px-3 py-2 text-white hover:text-purple-300 transition-colors duration-300">Skills</a>
-                    <a href="#contact" class="mobile-nav-link block px-3 py-2 text-white hover:text-purple-300 transition-colors duration-300">Contact</a>
+                    <a href="#home" class="mobile-nav-link block px-3 py-2 text-white hover:text-gray-300 transition-colors duration-300">Home</a>
+                    <a href="#about" class="mobile-nav-link block px-3 py-2 text-white hover:text-gray-300 transition-colors duration-300">About</a>
+                    <a href="#projects" class="mobile-nav-link block px-3 py-2 text-white hover:text-gray-300 transition-colors duration-300">Projects</a>
+                    <a href="#skills" class="mobile-nav-link block px-3 py-2 text-white hover:text-gray-300 transition-colors duration-300">Skills</a>
+                    <a href="#contact" class="mobile-nav-link block px-3 py-2 text-white hover:text-gray-300 transition-colors duration-300">Contact</a>
                 </div>
             </div>
         </div>
@@ -230,16 +354,16 @@
             <div class="fade-in-up">
                 <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6">
                     <span class="block">Creative</span>
-                    <span class="block bg-gradient-to-r from-yellow-400 to-pink-400 bg-clip-text text-transparent typewriter">Developer</span>
+                    <span id="typewriter-text" class="block min-h-[1.2em]" style="background: var(--gradient-accent); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></span>
                 </h1>
                 <p class="text-xl sm:text-2xl lg:text-3xl mb-8 max-w-3xl mx-auto opacity-90">
                     Crafting digital experiences that inspire and engage
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <a href="#projects" class="bg-white text-purple-600 px-8 py-4 rounded-full font-semibold hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105">
+                    <a href="#projects" class="px-8 py-4 rounded-full font-semibold hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105" style="background-color: var(--button-primary-bg); color: var(--button-primary-text);">
                         View My Work
                     </a>
-                    <a href="#contact" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-purple-600 transition-all duration-300 transform hover:scale-105">
+                    <a href="#contact" class="border-2 px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105" style="border-color: var(--button-secondary-border); color: var(--button-secondary-text); background-color: var(--button-secondary-bg);" onmouseover="this.style.backgroundColor='var(--button-primary-bg)'; this.style.color='var(--button-primary-text)'" onmouseout="this.style.backgroundColor='var(--button-secondary-bg)'; this.style.color='var(--button-secondary-text)'">
                         Get In Touch
                     </a>
                 </div>
@@ -257,7 +381,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div class="slide-in-left">
-                    <h2 class="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                    <h2 class="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-gray-600 to-white bg-clip-text text-transparent">
                         About Me
                     </h2>
                     <p class="text-lg text-gray-600 mb-6 leading-relaxed">
@@ -270,15 +394,15 @@
                     <!-- Stats -->
                     <div class="grid grid-cols-3 gap-6">
                         <div class="text-center">
-                            <div class="text-3xl font-bold text-purple-600 mb-2" data-count="50">0</div>
+                            <div class="text-3xl font-bold text-gray-600 mb-2" data-count="50">0</div>
                             <div class="text-gray-600">Projects</div>
                         </div>
                         <div class="text-center">
-                            <div class="text-3xl font-bold text-purple-600 mb-2" data-count="3">0</div>
+                            <div class="text-3xl font-bold text-gray-600 mb-2" data-count="3">0</div>
                             <div class="text-gray-600">Years Exp</div>
                         </div>
                         <div class="text-center">
-                            <div class="text-3xl font-bold text-purple-600 mb-2" data-count="100">0</div>
+                            <div class="text-3xl font-bold text-gray-600 mb-2" data-count="100">0</div>
                             <div class="text-gray-600">Happy Clients</div>
                         </div>
                     </div>
@@ -287,7 +411,7 @@
                 <div class="slide-in-right">
                     <div class="relative">
                         <!-- Profile Image Placeholder -->
-                        <div class="w-80 h-80 mx-auto bg-gradient-to-br from-purple-400 to-pink-400 rounded-full flex items-center justify-center text-white text-6xl shadow-2xl">
+                        <div class="w-80 h-80 mx-auto bg-gradient-to-br from-gray-600 to-gray-800 rounded-full flex items-center justify-center text-white text-6xl shadow-2xl">
                             <i class="fas fa-user"></i>
                         </div>
                         
@@ -308,7 +432,7 @@
     <section id="projects" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-in-up">
-                <h2 class="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                <h2 class="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-gray-600 to-white bg-clip-text text-transparent">
                     Featured Projects
                 </h2>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -319,7 +443,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Project 1 -->
                 <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-xl fade-in-up">
-                    <div class="h-48 bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
+                    <div class="h-48 bg-gradient-to-br from-blue-400 to-gray-500 flex items-center justify-center">
                         <i class="fas fa-mobile-alt text-white text-6xl"></i>
                     </div>
                     <div class="p-6">
@@ -329,9 +453,9 @@
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full">React Native</span>
-                            <span class="px-3 py-1 bg-purple-100 text-purple-800 text-sm rounded-full">UI/UX</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-800 text-sm rounded-full">UI/UX</span>
                         </div>
-                        <a href="#" class="inline-flex items-center text-purple-600 hover:text-purple-800 font-semibold">
+                        <a href="#" class="inline-flex items-center text-gray-600 hover:text-gray-800 font-semibold">
                             View Project <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
@@ -351,7 +475,7 @@
                             <span class="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">React</span>
                             <span class="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full">Node.js</span>
                         </div>
-                        <a href="#" class="inline-flex items-center text-purple-600 hover:text-purple-800 font-semibold">
+                        <a href="#" class="inline-flex items-center text-gray-600 hover:text-gray-800 font-semibold">
                             View Project <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
@@ -371,7 +495,7 @@
                             <span class="px-3 py-1 bg-yellow-100 text-yellow-800 text-sm rounded-full">Vue.js</span>
                             <span class="px-3 py-1 bg-red-100 text-red-800 text-sm rounded-full">D3.js</span>
                         </div>
-                        <a href="#" class="inline-flex items-center text-purple-600 hover:text-purple-800 font-semibold">
+                        <a href="#" class="inline-flex items-center text-gray-600 hover:text-gray-800 font-semibold">
                             View Project <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
@@ -384,7 +508,7 @@
     <section id="skills" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-in-up">
-                <h2 class="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                <h2 class="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-gray-600 to-white bg-clip-text text-transparent">
                     Skills & Expertise
                 </h2>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -423,7 +547,7 @@
                 
                 <!-- Design -->
                 <div class="text-center fade-in-up" style="animation-delay: 0.4s;">
-                    <div class="w-20 h-20 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div class="w-20 h-20 bg-gradient-to-br from-gray-600 to-gray-800 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-palette text-white text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-4">Design</h3>
@@ -456,13 +580,13 @@
     <section id="contact" class="py-20 bg-gray-900 text-white relative overflow-hidden">
         <!-- Background Animation -->
         <div class="absolute inset-0">
-            <div class="blob absolute top-10 left-10 w-64 h-64 bg-purple-600 bg-opacity-20 floating"></div>
-            <div class="blob absolute bottom-10 right-10 w-80 h-80 bg-pink-600 bg-opacity-20 floating" style="animation-delay: -2s;"></div>
+            <div class="blob absolute top-10 left-10 w-64 h-64 bg-gray-600 bg-opacity-20 floating"></div>
+            <div class="blob absolute bottom-10 right-10 w-80 h-80 bg-gray-600 bg-opacity-20 floating" style="animation-delay: -2s;"></div>
         </div>
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16 fade-in-up">
-                <h2 class="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                <h2 class="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-gray-400 to-white bg-clip-text text-transparent">
                     Let's Work Together
                 </h2>
                 <p class="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -477,7 +601,7 @@
                     
                     <div class="space-y-6">
                         <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+                            <div class="w-12 h-12 bg-gradient-to-br from-gray-500 to-gray-700 rounded-full flex items-center justify-center">
                                 <i class="fas fa-envelope text-white"></i>
                             </div>
                             <div>
@@ -487,7 +611,7 @@
                         </div>
                         
                         <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+                            <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-gray-500 rounded-full flex items-center justify-center">
                                 <i class="fas fa-phone text-white"></i>
                             </div>
                             <div>
@@ -533,34 +657,34 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                                 <label for="name" class="block text-sm font-medium mb-2">Name *</label>
-                                <input type="text" id="name" name="name" required 
-                                       class="w-full px-4 py-3 bg-white bg-opacity-10 border border-white border-opacity-20 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white placeholder-gray-300"
+                                <input type="text" id="name" name="name" required autocomplete="off"
+                                       class="w-full px-4 py-3 bg-white bg-opacity-10 border border-white border-opacity-20 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 text-white placeholder-gray-300"
                                        placeholder="Your Name">
                             </div>
                             <div>
                                 <label for="email" class="block text-sm font-medium mb-2">Email *</label>
-                                <input type="email" id="email" name="email" required
-                                       class="w-full px-4 py-3 bg-white bg-opacity-10 border border-white border-opacity-20 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white placeholder-gray-300"
+                                <input type="email" id="email" name="email" required autocomplete="off"
+                                       class="w-full px-4 py-3 bg-white bg-opacity-10 border border-white border-opacity-20 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 text-white placeholder-gray-300"
                                        placeholder="your@email.com">
                             </div>
                         </div>
                         
                         <div>
                             <label for="subject" class="block text-sm font-medium mb-2">Subject</label>
-                            <input type="text" id="subject" name="subject"
-                                   class="w-full px-4 py-3 bg-white bg-opacity-10 border border-white border-opacity-20 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white placeholder-gray-300"
+                            <input type="text" id="subject" name="subject" autocomplete="off"
+                                   class="w-full px-4 py-3 bg-white bg-opacity-10 border border-white border-opacity-20 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 text-white placeholder-gray-300"
                                    placeholder="Project Discussion">
                         </div>
                         
                         <div>
                             <label for="message" class="block text-sm font-medium mb-2">Message *</label>
-                            <textarea id="message" name="message" rows="5" required
-                                      class="w-full px-4 py-3 bg-white bg-opacity-10 border border-white border-opacity-20 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white placeholder-gray-300 resize-none"
+                            <textarea id="message" name="message" rows="5" required autocomplete="off"
+                                      class="w-full px-4 py-3 bg-white bg-opacity-10 border border-white border-opacity-20 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 text-white placeholder-gray-300 resize-none"
                                       placeholder="Tell me about your project..."></textarea>
                         </div>
                         
                         <button type="submit" 
-                                class="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-4 rounded-lg font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105">
+                                class="w-full bg-gradient-to-r from-gray-500 to-gray-700 text-white px-8 py-4 rounded-lg font-semibold hover:from-gray-600 hover:to-gray-800 transition-all duration-300 transform hover:scale-105">
                             Send Message
                         </button>
                     </form>
