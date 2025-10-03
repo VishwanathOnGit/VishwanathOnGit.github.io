@@ -297,57 +297,36 @@
         }
     </script>
 </head>
-<body class="bg-gray-50 text-gray-900 overflow-x-hidden">
-    <!-- Scroll Progress Indicator -->
-    <div class="scroll-indicator"></div>
-    
-    <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex-shrink-0">
-                    <span class="text-xl font-bold" style="background: var(--gradient-heading); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Portfolio</span>
-                </div>
-                
-                <!-- Desktop Menu -->
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#home" class="nav-link text-white transition-colors duration-300" style="color: var(--navbar-text);" onmouseover="this.style.color='var(--navbar-hover)'" onmouseout="this.style.color='var(--navbar-text)'">Home</a>
-                        <a href="#about" class="nav-link text-white transition-colors duration-300" style="color: var(--navbar-text);" onmouseover="this.style.color='var(--navbar-hover)'" onmouseout="this.style.color='var(--navbar-text)'">About</a>
-                        <a href="#projects" class="nav-link text-white transition-colors duration-300" style="color: var(--navbar-text);" onmouseover="this.style.color='var(--navbar-hover)'" onmouseout="this.style.color='var(--navbar-text)'">Projects</a>
-                        <a href="#skills" class="nav-link text-white transition-colors duration-300" style="color: var(--navbar-text);" onmouseover="this.style.color='var(--navbar-hover)'" onmouseout="this.style.color='var(--navbar-text)'">Skills</a>
-                        <a href="#contact" class="nav-link text-white transition-colors duration-300" style="color: var(--navbar-text);" onmouseover="this.style.color='var(--navbar-hover)'" onmouseout="this.style.color='var(--navbar-text)'">Contact</a>
-                    </div>
-                </div>
-                
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-white hover:text-gray-300 focus:outline-none">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="md:hidden hidden">
-                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white bg-opacity-10 backdrop-blur-lg rounded-lg mt-2">
-                    <a href="#home" class="mobile-nav-link block px-3 py-2 text-white hover:text-gray-300 transition-colors duration-300">Home</a>
-                    <a href="#about" class="mobile-nav-link block px-3 py-2 text-white hover:text-gray-300 transition-colors duration-300">About</a>
-                    <a href="#projects" class="mobile-nav-link block px-3 py-2 text-white hover:text-gray-300 transition-colors duration-300">Projects</a>
-                    <a href="#skills" class="mobile-nav-link block px-3 py-2 text-white hover:text-gray-300 transition-colors duration-300">Skills</a>
-                    <a href="#contact" class="mobile-nav-link block px-3 py-2 text-white hover:text-gray-300 transition-colors duration-300">Contact</a>
-                </div>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="min-h-screen gradient-bg flex items-center justify-center relative overflow-hidden">
-        <!-- Animated Background Elements -->
-        <div class="absolute inset-0 overflow-hidden">
-            <div class="blob absolute top-20 left-10 w-72 h-72 bg-white bg-opacity-10 floating"></div>
-            <div class="blob absolute bottom-20 right-10 w-96 h-96 bg-white bg-opacity-5 floating" style="animation-delay: -3s;"></div>
-            <div class="blob absolute top-1/2 left-1/3 w-48 h-48 bg-white bg-opacity-15 floating" style="animation-delay: -1.5s;"></div>
+<body>
+  <!-- ======= Mobile nav toggle button ======= -->
+  <button type="button" class="mobile-nav-toggle d-xl-none"><i class="bi bi-list mobile-nav-toggle"></i></button>
+  <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex flex-column justify-content-center">
+    <div class="container" data-aos="zoom-in" data-aos-delay="100">
+      <h1>Vishwanath P</h1>
+      <p>I'm a <span class="typed" data-typed-items="Developer, Traveller"></span></p>
+      <div class="social-links">
+        <a href="https://github.com/VishwanathOnGit" class="github" target="_blank"><i class="bx bxl-github"></i></a>
+        <a href="https://www.linkedin.com/in/vishwanath-pucha/" class="linkedin" target="_blank"><i
+            class="bx bxl-linkedin"></i></a>
+        <a href="https://www.instagram.com/theunorthodoxguy/" class="instagram" target="_blank"><i
+            class="bx bxl-instagram"></i></a>
+        <a href="https://twitter.com/VishwanathOnGit" class="twitter" target="_blank"><i class="bx bxl-twitter"></i></a>
+        <a href="healthy.html" class="healthy" title="Healthy Life Tracker"><i class="bx bx-heart"></i></a>
+      </div>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>About</h2>
         </div>
         
         <div class="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8">
@@ -369,61 +348,32 @@
                 </div>
             </div>
         </div>
-        
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
-            <i class="fas fa-chevron-down text-2xl"></i>
-        </div>
-    </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-white relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="slide-in-left">
-                    <h2 class="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-gray-600 to-white bg-clip-text text-transparent">
-                        About Me
-                    </h2>
-                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
-                        I'm a passionate developer and designer with a love for creating beautiful, functional digital experiences. With expertise in modern web technologies, I bring ideas to life through clean code and thoughtful design.
-                    </p>
-                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                        When I'm not coding, you can find me exploring new design trends, contributing to open-source projects, or enjoying a good cup of coffee while sketching new ideas.
-                    </p>
-                    
-                    <!-- Stats -->
-                    <div class="grid grid-cols-3 gap-6">
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-gray-600 mb-2" data-count="50">0</div>
-                            <div class="text-gray-600">Projects</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-gray-600 mb-2" data-count="3">0</div>
-                            <div class="text-gray-600">Years Exp</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-gray-600 mb-2" data-count="100">0</div>
-                            <div class="text-gray-600">Happy Clients</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="slide-in-right">
-                    <div class="relative">
-                        <!-- Profile Image Placeholder -->
-                        <div class="w-80 h-80 mx-auto bg-gradient-to-br from-gray-600 to-gray-800 rounded-full flex items-center justify-center text-white text-6xl shadow-2xl">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        
-                        <!-- Floating Elements -->
-                        <div class="absolute -top-4 -right-4 w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center floating">
-                            <i class="fas fa-code text-white text-xl"></i>
-                        </div>
-                        <div class="absolute -bottom-4 -left-4 w-20 h-20 bg-blue-500 rounded-full flex items-center justify-center floating" style="animation-delay: -2s;">
-                            <i class="fas fa-palette text-white text-2xl"></i>
-                        </div>
-                    </div>
-                </div>
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Resume Section ======= -->
+    <section id="resume" class="resume">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Resume</h2>
+          <p>Highly skilled in developing robust, scalable, and high-performance web applications, ensuring optimal user experience and system efficiency.</p>
+          <p>Passionate about building innovative solutions that drive business growth.</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6">
+            <h3 class="resume-title">Sumary</h3>
+            <div class="resume-item pb-0">
+              <h4>Vishwanath P</h4>
+              <p><em>Innovative and results-driven Full Stack Engineer with 6+ years of experience in designing,
+                  developing, and deploying scalable REST APIs and web applications — transforming complex business
+                  requirements into efficient, high-performance solutions from concept to production.</em></p>
+              <ul>
+                <li>Bangalore, India</li>
+                <li>vishwanathpucha@gmail.com</li>
+              </ul>
             </div>
         </div>
     </section>
