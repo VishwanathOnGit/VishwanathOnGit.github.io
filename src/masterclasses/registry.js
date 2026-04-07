@@ -1,0 +1,112 @@
+import { lazy } from "react";
+
+/**
+ * Masterclass Registry — the single source of truth.
+ *
+ * To add a new masterclass:
+ * 1. Drop the .jsx file into src/masterclasses/
+ * 2. Add one entry to this array.
+ * That's it. Routing, homepage cards, and progress tracking all happen automatically.
+ */
+const masterclasses = [
+  {
+    id: "communication",
+    path: "/communication",
+    title: "Communication",
+    subtitle: "90 days to speak, write & connect",
+    icon: "🎙️",
+    accent: "#5eead4",
+    accentDark: "#0d9488",
+    gradient: "linear-gradient(135deg, #0d9488 0%, #5eead4 100%)",
+    totalLessons: 63,
+    phases: 5,
+    duration: "90 days",
+    component: lazy(() => import("./communication_masterclass.jsx")),
+  },
+  {
+    id: "critical-thinking",
+    path: "/critical-thinking",
+    title: "Critical Thinking",
+    subtitle: "See what others miss, ask what nobody asks",
+    icon: "🧠",
+    accent: "#c084fc",
+    accentDark: "#7c3aed",
+    gradient: "linear-gradient(135deg, #7c3aed 0%, #c084fc 100%)",
+    totalLessons: 69,
+    phases: 5,
+    duration: "90 days",
+    component: lazy(() => import("./critical_thinking_masterclass.jsx")),
+  },
+  {
+    id: "design-patterns",
+    path: "/design-patterns",
+    title: "Design Patterns",
+    subtitle: "All 23 GoF patterns in 7 days",
+    icon: "🏗️",
+    accent: "#38bdf8",
+    accentDark: "#0369a1",
+    gradient: "linear-gradient(135deg, #0369a1 0%, #38bdf8 100%)",
+    totalLessons: 30,
+    phases: 7,
+    duration: "7 days",
+    component: lazy(() => import("./design_patterns_masterclass.jsx")),
+  },
+  {
+    id: "gentleman-ethics",
+    path: "/gentleman-ethics",
+    title: "Gentleman & Ethics",
+    subtitle: "Presence, character, conduct & wisdom",
+    icon: "🤵",
+    accent: "#a78bfa",
+    accentDark: "#6d28d9",
+    gradient: "linear-gradient(135deg, #6d28d9 0%, #a78bfa 100%)",
+    totalLessons: 63,
+    phases: 5,
+    duration: "90 days",
+    component: lazy(() => import("./gentleman_ethics_masterclass.jsx")),
+  },
+  {
+    id: "laravel-beyond",
+    path: "/laravel-beyond",
+    title: "Laravel & Beyond",
+    subtitle: "From framework user to architect",
+    icon: "🔴",
+    accent: "#f97316",
+    accentDark: "#c2410c",
+    gradient: "linear-gradient(135deg, #c2410c 0%, #f97316 100%)",
+    totalLessons: 25,
+    phases: 2,
+    duration: "Deep dive",
+    component: lazy(() => import("./laravel_beyond_masterclass.jsx")),
+  },
+  {
+    id: "senior-engineer",
+    path: "/senior-engineer",
+    title: "Senior Engineer Excellence",
+    subtitle: "Craft, own, design, ship & lead",
+    icon: "⚡",
+    accent: "#2dd4bf",
+    accentDark: "#0d9488",
+    gradient: "linear-gradient(135deg, #0d9488 0%, #2dd4bf 100%)",
+    totalLessons: 63,
+    phases: 5,
+    duration: "90 days",
+    component: lazy(() => import("./senior_engineer_excellence_masterclass.jsx")),
+  },
+  {
+    id: "staff-mindset",
+    path: "/staff-mindset",
+    title: "Staff Engineer Mindset",
+    subtitle: "Multiply, architect, influence & strategize",
+    icon: "🔮",
+    accent: "#f87171",
+    accentDark: "#dc2626",
+    gradient: "linear-gradient(135deg, #dc2626 0%, #f87171 100%)",
+    totalLessons: 63,
+    phases: 5,
+    duration: "90 days",
+    component: lazy(() => import("./staff_mindset_masterclass.jsx")),
+  },
+];
+
+export default masterclasses;
