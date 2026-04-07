@@ -1,0 +1,944 @@
+{
+  "quotes": [
+    {
+      "text": "Take care of your body. It's the only place you have to live.",
+      "author": "Jim Rohn",
+      "category": "Health"
+    },
+    {
+      "text": "Health is a state of complete harmony of the body, mind and spirit.",
+      "author": "B.K.S. Iyengar",
+      "category": "Health"
+    },
+    {
+      "text": "The first wealth is health.",
+      "author": "Ralph Waldo Emerson",
+      "category": "Health"
+    },
+    {
+      "text": "A healthy outside starts from the inside.",
+      "author": "Robert Urich",
+      "category": "Health"
+    },
+    {
+      "text": "Your body can stand almost anything. It's your mind that you have to convince.",
+      "author": "Anonymous",
+      "category": "Health"
+    },
+    {
+      "text": "Exercise is a celebration of what your body can do, not a punishment for what you ate.",
+      "author": "Anonymous",
+      "category": "Health"
+    },
+    {
+      "text": "The groundwork for all happiness is good health.",
+      "author": "Leigh Hunt",
+      "category": "Health"
+    },
+    {
+      "text": "To keep the body in good health is a duty... otherwise we shall not be able to keep our mind strong and clear.",
+      "author": "Buddha",
+      "category": "Health"
+    },
+    {
+      "text": "Health is not valued till sickness comes.",
+      "author": "Thomas Fuller",
+      "category": "Health"
+    },
+    {
+      "text": "Prevention is better than cure.",
+      "author": "Desiderius Erasmus",
+      "category": "Health"
+    },
+    {
+      "text": "Good health and good sense are two of life's greatest blessings.",
+      "author": "Publilius Syrus",
+      "category": "Health"
+    },
+    {
+      "text": "Health is the greatest gift, contentment the greatest wealth, faithfulness the best relationship.",
+      "author": "Buddha",
+      "category": "Health"
+    },
+    {
+      "text": "Happiness is not something ready made. It comes from your own actions.",
+      "author": "Dalai Lama",
+      "category": "Happiness"
+    },
+    {
+      "text": "The purpose of our lives is to be happy.",
+      "author": "Dalai Lama",
+      "category": "Happiness"
+    },
+    {
+      "text": "Choose to be optimistic, it feels better.",
+      "author": "Dalai Lama",
+      "category": "Positivity"
+    },
+    {
+      "text": "Life is 10% what happens to you and 90% how you react to it.",
+      "author": "Charles R. Swindoll",
+      "category": "Positivity"
+    },
+    {
+      "text": "The only way to do great work is to love what you do.",
+      "author": "Steve Jobs",
+      "category": "Happiness"
+    },
+    {
+      "text": "Smile, breathe, and go slowly.",
+      "author": "Thich Nhat Hanh",
+      "category": "Happiness"
+    },
+    {
+      "text": "Every moment is a fresh beginning.",
+      "author": "T.S. Eliot",
+      "category": "Positivity"
+    },
+    {
+      "text": "Positive anything is better than negative nothing.",
+      "author": "Elbert Hubbard",
+      "category": "Positivity"
+    },
+    {
+      "text": "Happiness is an inside job.",
+      "author": "William Arthur Ward",
+      "category": "Happiness"
+    },
+    {
+      "text": "The secret of happiness is freedom, the secret of freedom is courage.",
+      "author": "Carrie Jones",
+      "category": "Happiness"
+    },
+    {
+      "text": "Count your age by friends, not years. Count your life by smiles, not tears.",
+      "author": "John Lennon",
+      "category": "Happiness"
+    },
+    {
+      "text": "Very little is needed to make a happy life; it is all within yourself, in your way of thinking.",
+      "author": "Marcus Aurelius",
+      "category": "Happiness"
+    },
+    {
+      "text": "The real measure of your wealth is how much you'd be worth if you lost all your money.",
+      "author": "Anonymous",
+      "category": "Wealth"
+    },
+    {
+      "text": "Wealth consists not in having great possessions, but in having few wants.",
+      "author": "Epictetus",
+      "category": "Wealth"
+    },
+    {
+      "text": "Success is not the key to happiness. Happiness is the key to success.",
+      "author": "Albert Schweitzer",
+      "category": "Success"
+    },
+    {
+      "text": "The best investment you can make is in yourself.",
+      "author": "Warren Buffett",
+      "category": "Wealth"
+    },
+    {
+      "text": "Don't work for money; make money work for you.",
+      "author": "Robert Kiyosaki",
+      "category": "Wealth"
+    },
+    {
+      "text": "Rich people have small TVs and big libraries, and poor people have small libraries and big TVs.",
+      "author": "Zig Ziglar",
+      "category": "Wealth"
+    },
+    {
+      "text": "Time is more valuable than money. You can get more money, but you cannot get more time.",
+      "author": "Jim Rohn",
+      "category": "Wealth"
+    },
+    {
+      "text": "It's not how much money you make, but how much money you keep, how hard it works for you, and how many generations you keep it for.",
+      "author": "Robert Kiyosaki",
+      "category": "Wealth"
+    },
+    {
+      "text": "Fortune favors the bold.",
+      "author": "Latin Proverb",
+      "category": "Success"
+    },
+    {
+      "text": "Wealth is the ability to fully experience life.",
+      "author": "Henry David Thoreau",
+      "category": "Wealth"
+    },
+    {
+      "text": "Be yourself; everyone else is already taken.",
+      "author": "Oscar Wilde",
+      "category": "Growth"
+    },
+    {
+      "text": "You are never too old to set another goal or to dream a new dream.",
+      "author": "C.S. Lewis",
+      "category": "Growth"
+    },
+    {
+      "text": "The only impossible journey is the one you never begin.",
+      "author": "Tony Robbins",
+      "category": "Motivation"
+    },
+    {
+      "text": "Believe you can and you're halfway there.",
+      "author": "Theodore Roosevelt",
+      "category": "Motivation"
+    },
+    {
+      "text": "Your limitation—it's only your imagination.",
+      "author": "Anonymous",
+      "category": "Motivation"
+    },
+    {
+      "text": "Great things never come from comfort zones.",
+      "author": "Anonymous",
+      "category": "Growth"
+    },
+    {
+      "text": "Dream it. Wish it. Do it.",
+      "author": "Anonymous",
+      "category": "Motivation"
+    },
+    {
+      "text": "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+      "author": "Winston Churchill",
+      "category": "Motivation"
+    },
+    {
+      "text": "The way to get started is to quit talking and begin doing.",
+      "author": "Walt Disney",
+      "category": "Action"
+    },
+    {
+      "text": "Don't be afraid to give up the good to go for the great.",
+      "author": "John D. Rockefeller",
+      "category": "Growth"
+    },
+    {
+      "text": "If you really look closely, most overnight successes took a long time.",
+      "author": "Steve Jobs",
+      "category": "Success"
+    },
+    {
+      "text": "The best time to plant a tree was 20 years ago. The second best time is now.",
+      "author": "Chinese Proverb",
+      "category": "Wisdom"
+    },
+    {
+      "text": "Kindness is a language which the deaf can hear and the blind can see.",
+      "author": "Mark Twain",
+      "category": "Kindness"
+    },
+    {
+      "text": "Be the change you wish to see in the world.",
+      "author": "Mahatma Gandhi",
+      "category": "Change"
+    },
+    {
+      "text": "In the middle of difficulty lies opportunity.",
+      "author": "Albert Einstein",
+      "category": "Opportunity"
+    },
+    {
+      "text": "No one can make you feel inferior without your consent.",
+      "author": "Eleanor Roosevelt",
+      "category": "Self-Worth"
+    },
+    {
+      "text": "A friend is someone who knows all about you and still loves you.",
+      "author": "Elbert Hubbard",
+      "category": "Friendship"
+    },
+    {
+      "text": "Peace comes from within. Do not seek it without.",
+      "author": "Buddha",
+      "category": "Peace"
+    },
+    {
+      "text": "The present moment is the only time over which we have dominion.",
+      "author": "Thich Nhat Hanh",
+      "category": "Mindfulness"
+    },
+    {
+      "text": "Yesterday is history, tomorrow is a mystery, today is a gift.",
+      "author": "Eleanor Roosevelt",
+      "category": "Mindfulness"
+    },
+    {
+      "text": "Wherever you are, be there totally.",
+      "author": "Eckhart Tolle",
+      "category": "Mindfulness"
+    },
+    {
+      "text": "The mind is everything. What you think you become.",
+      "author": "Buddha",
+      "category": "Mindfulness"
+    },
+    {
+      "text": "Life is what happens to you while you're busy making other plans.",
+      "author": "John Lennon",
+      "category": "Mindfulness"
+    },
+    {
+      "text": "Creativity is intelligence having fun.",
+      "author": "Albert Einstein",
+      "category": "Creativity"
+    },
+    {
+      "text": "Innovation distinguishes between a leader and a follower.",
+      "author": "Steve Jobs",
+      "category": "Innovation"
+    },
+    {
+      "text": "The way to get started is to quit talking and begin doing.",
+      "author": "Walt Disney",
+      "category": "Action"
+    },
+    {
+      "text": "Imagination is more important than knowledge.",
+      "author": "Albert Einstein",
+      "category": "Creativity"
+    },
+    {
+      "text": "Creativity takes courage.",
+      "author": "Henri Matisse",
+      "category": "Creativity"
+    },
+    {
+      "text": "Gratitude turns what we have into enough.",
+      "author": "Anonymous",
+      "category": "Gratitude"
+    },
+    {
+      "text": "The unthankful heart discovers no mercies; but the thankful heart will find, in every hour, some heavenly blessings.",
+      "author": "Henry Ward Beecher",
+      "category": "Gratitude"
+    },
+    {
+      "text": "Appreciate everything your associates do for the business.",
+      "author": "Sam Walton",
+      "category": "Appreciation"
+    },
+    {
+      "text": "As we express our gratitude, we must never forget that the highest appreciation is not to utter words, but to live by them.",
+      "author": "John F. Kennedy",
+      "category": "Gratitude"
+    },
+    {
+      "text": "Gratitude is not only the greatest of virtues, but the parent of all others.",
+      "author": "Cicero",
+      "category": "Gratitude"
+    },
+    {
+      "text": "Energy and persistence conquer all things.",
+      "author": "Benjamin Franklin",
+      "category": "Energy"
+    },
+    {
+      "text": "The energy of the mind is the essence of life.",
+      "author": "Aristotle",
+      "category": "Energy"
+    },
+    {
+      "text": "Life is energy, and energy is life's most precious gift.",
+      "author": "Anonymous",
+      "category": "Vitality"
+    },
+    {
+      "text": "Where focus goes, energy flows.",
+      "author": "Tony Robbins",
+      "category": "Energy"
+    },
+    {
+      "text": "The higher your energy level, the more efficient your body.",
+      "author": "Tony Robbins",
+      "category": "Energy"
+    },
+    {
+      "text": "Balance is not something you find, it's something you create.",
+      "author": "Jana Kingsford",
+      "category": "Balance"
+    },
+    {
+      "text": "Life is like riding a bicycle. To keep your balance, you must keep moving.",
+      "author": "Albert Einstein",
+      "category": "Balance"
+    },
+    {
+      "text": "Harmony makes small things grow, lack of it makes great things decay.",
+      "author": "Sallust",
+      "category": "Harmony"
+    },
+    {
+      "text": "The art of living is a fine mingling of letting go and holding on.",
+      "author": "Havelock Ellis",
+      "category": "Balance"
+    },
+    {
+      "text": "Work is not always required. There is such a thing as sacred idleness.",
+      "author": "George MacDonald",
+      "category": "Balance"
+    },
+    {
+      "text": "Champions are made from something deep inside of them: a desire, a dream, a vision.",
+      "author": "Muhammad Ali",
+      "category": "Success"
+    },
+    {
+      "text": "The difference between ordinary and extraordinary is that little extra.",
+      "author": "Jimmy Johnson",
+      "category": "Excellence"
+    },
+    {
+      "text": "Quality is not an act, it is a habit.",
+      "author": "Aristotle",
+      "category": "Excellence"
+    },
+    {
+      "text": "Excellence is never an accident. It is always the result of high intention, sincere effort, and intelligent execution.",
+      "author": "Aristotle",
+      "category": "Excellence"
+    },
+    {
+      "text": "Strive not to be a success, but rather to be of value.",
+      "author": "Albert Einstein",
+      "category": "Purpose"
+    },
+    {
+      "text": "The greatest glory in living lies not in never falling, but in rising every time we fall.",
+      "author": "Nelson Mandela",
+      "category": "Resilience"
+    },
+    {
+      "text": "What lies behind us and what lies before us are tiny matters compared to what lies within us.",
+      "author": "Ralph Waldo Emerson",
+      "category": "Inner Strength"
+    },
+    {
+      "text": "You have been assigned this mountain to show others it can be moved.",
+      "author": "Mel Robbins",
+      "category": "Resilience"
+    },
+    {
+      "text": "It is during our darkest moments that we must focus to see the light.",
+      "author": "Aristotle",
+      "category": "Hope"
+    },
+    {
+      "text": "Fall seven times, stand up eight.",
+      "author": "Japanese Proverb",
+      "category": "Resilience"
+    },
+    {
+      "text": "Life isn't about finding yourself. Life is about creating yourself.",
+      "author": "George Bernard Shaw",
+      "category": "Self-Discovery"
+    },
+    {
+      "text": "The only person you are destined to become is the person you decide to be.",
+      "author": "Ralph Waldo Emerson",
+      "category": "Self-Determination"
+    },
+    {
+      "text": "Your time is limited, don't waste it living someone else's life.",
+      "author": "Steve Jobs",
+      "category": "Authenticity"
+    },
+    {
+      "text": "To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment.",
+      "author": "Ralph Waldo Emerson",
+      "category": "Authenticity"
+    },
+    {
+      "text": "The privilege of a lifetime is being who you are.",
+      "author": "Joseph Campbell",
+      "category": "Self-Acceptance"
+    },
+    {
+      "text": "Love yourself first and everything else falls into line.",
+      "author": "Lucille Ball",
+      "category": "Self-Love"
+    },
+    {
+      "text": "You yourself, as much as anybody in the entire universe, deserve your love and affection.",
+      "author": "Buddha",
+      "category": "Self-Love"
+    },
+    {
+      "text": "Confidence comes not from always being right but from not fearing to be wrong.",
+      "author": "Peter T. Mcintyre",
+      "category": "Confidence"
+    },
+    {
+      "text": "If you want to fly, you have to give up what weighs you down.",
+      "author": "Toni Morrison",
+      "category": "Freedom"
+    },
+    {
+      "text": "The secret to getting ahead is getting started.",
+      "author": "Mark Twain",
+      "category": "Beginning"
+    },
+    {
+      "text": "A year from now you may wish you had started today.",
+      "author": "Karen Lamb",
+      "category": "Action"
+    },
+    {
+      "text": "The best time to plant a tree was 20 years ago. The second best time is now.",
+      "author": "Chinese Proverb",
+      "category": "Action"
+    },
+    {
+      "text": "Don't wait for opportunity. Create it.",
+      "author": "Anonymous",
+      "category": "Opportunity"
+    },
+    {
+      "text": "The future belongs to those who believe in the beauty of their dreams.",
+      "author": "Eleanor Roosevelt",
+      "category": "Dreams"
+    },
+    {
+      "text": "Dream big and dare to fail.",
+      "author": "Norman Vaughan",
+      "category": "Dreams"
+    },
+    {
+      "text": "All our dreams can come true if we have the courage to pursue them.",
+      "author": "Walt Disney",
+      "category": "Dreams"
+    },
+    {
+      "text": "A dream doesn't become reality through magic; it takes sweat, determination and hard work.",
+      "author": "Colin Powell",
+      "category": "Dreams"
+    },
+    {
+      "text": "The biggest adventure you can take is to live the life of your dreams.",
+      "author": "Oprah Winfrey",
+      "category": "Dreams"
+    },
+    {
+      "text": "What we think, we become.",
+      "author": "Buddha",
+      "category": "Mindset"
+    },
+    {
+      "text": "Whether you think you can or you think you can't, you're right.",
+      "author": "Henry Ford",
+      "category": "Mindset"
+    },
+    {
+      "text": "The mind is a powerful force. It can enslave us or empower us.",
+      "author": "David Cuschieri",
+      "category": "Mindset"
+    },
+    {
+      "text": "You are what you think about all day long.",
+      "author": "Robert Schuller",
+      "category": "Mindset"
+    },
+    {
+      "text": "Change your thoughts and you change your world.",
+      "author": "Norman Vincent Peale",
+      "category": "Mindset"
+    },
+    {
+      "text": "The pessimist sees difficulty in every opportunity. The optimist sees opportunity in every difficulty.",
+      "author": "Winston Churchill",
+      "category": "Optimism"
+    },
+    {
+      "text": "Keep your face always toward the sunshine—and shadows will fall behind you.",
+      "author": "Walt Whitman",
+      "category": "Optimism"
+    },
+    {
+      "text": "In the midst of winter, I found there was, within me, an invincible summer.",
+      "author": "Albert Camus",
+      "category": "Hope"
+    },
+    {
+      "text": "Hope is the thing with feathers that perches in the soul.",
+      "author": "Emily Dickinson",
+      "category": "Hope"
+    },
+    {
+      "text": "Once you choose hope, anything's possible.",
+      "author": "Christopher Reeve",
+      "category": "Hope"
+    },
+    {
+      "text": "Discipline is the bridge between goals and accomplishment.",
+      "author": "Jim Rohn",
+      "category": "Discipline"
+    },
+    {
+      "text": "Success isn't always about greatness. It's about consistency. Consistent hard work leads to success.",
+      "author": "Dwayne Johnson",
+      "category": "Consistency"
+    },
+    {
+      "text": "We are what we repeatedly do. Excellence, then, is not an act, but a habit.",
+      "author": "Aristotle",
+      "category": "Habits"
+    },
+    {
+      "text": "The secret of getting ahead is getting started.",
+      "author": "Mark Twain",
+      "category": "Beginning"
+    },
+    {
+      "text": "Progress, not perfection.",
+      "author": "Anonymous",
+      "category": "Progress"
+    },
+    {
+      "text": "Comparison is the thief of joy.",
+      "author": "Theodore Roosevelt",
+      "category": "Contentment"
+    },
+    {
+      "text": "Be content with what you have; rejoice in the way things are.",
+      "author": "Lao Tzu",
+      "category": "Contentment"
+    },
+    {
+      "text": "Contentment is natural wealth, luxury is artificial poverty.",
+      "author": "Socrates",
+      "category": "Contentment"
+    },
+    {
+      "text": "Health is the crown on the well person's head that only the ill person can see.",
+      "author": "Robin Sharma",
+      "category": "Health"
+    },
+    {
+      "text": "A man too busy to take care of his health is like a mechanic too busy to take care of his tools.",
+      "author": "Spanish Proverb",
+      "category": "Health"
+    },
+    {
+      "text": "Those who think they have no time for bodily exercise will sooner or later have to find time for illness.",
+      "author": "Edward Stanley",
+      "category": "Health"
+    },
+    {
+      "text": "Healing is a matter of time, but it is sometimes also a matter of opportunity.",
+      "author": "Hippocrates",
+      "category": "Health"
+    },
+    {
+      "text": "The doctor of the future will give no medicines, but will interest his patients in the care of the human frame, in diet, and in the cause and prevention of disease.",
+      "author": "Thomas Edison",
+      "category": "Health"
+    },
+    {
+      "text": "Laughter is timeless, imagination has no age, and dreams are forever.",
+      "author": "Walt Disney",
+      "category": "Joy"
+    },
+    {
+      "text": "The most wasted of all days is one without laughter.",
+      "author": "E.E. Cummings",
+      "category": "Joy"
+    },
+    {
+      "text": "Joy is not in things; it is in us.",
+      "author": "Richard Wagner",
+      "category": "Joy"
+    },
+    {
+      "text": "Find joy in the ordinary.",
+      "author": "Anonymous",
+      "category": "Joy"
+    },
+    {
+      "text": "Choose joy. It's a choice you can make right now.",
+      "author": "Anonymous",
+      "category": "Joy"
+    },
+    {
+      "text": "Life is 10% what happens to you and 90% how you respond to it.",
+      "author": "Lou Holtz",
+      "category": "Attitude"
+    },
+    {
+      "text": "Your attitude determines your direction.",
+      "author": "Anonymous",
+      "category": "Attitude"
+    },
+    {
+      "text": "A positive attitude gives you power over your circumstances instead of your circumstances having power over you.",
+      "author": "Joyce Meyer",
+      "category": "Attitude"
+    },
+    {
+      "text": "The only disability in life is a bad attitude.",
+      "author": "Scott Hamilton",
+      "category": "Attitude"
+    },
+    {
+      "text": "Attitude is a little thing that makes a big difference.",
+      "author": "Winston Churchill",
+      "category": "Attitude"
+    },
+    {
+      "text": "Change is the end result of all true learning.",
+      "author": "Leo Buscaglia",
+      "category": "Learning"
+    },
+    {
+      "text": "The capacity to learn is a gift; the ability to learn is a skill; the willingness to learn is a choice.",
+      "author": "Brian Herbert",
+      "category": "Learning"
+    },
+    {
+      "text": "Live as if you were to die tomorrow. Learn as if you were to live forever.",
+      "author": "Mahatma Gandhi",
+      "category": "Learning"
+    },
+    {
+      "text": "The more that you read, the more things you will know. The more that you learn, the more places you'll go.",
+      "author": "Dr. Seuss",
+      "category": "Learning"
+    },
+    {
+      "text": "Education is the most powerful weapon which you can use to change the world.",
+      "author": "Nelson Mandela",
+      "category": "Education"
+    },
+    {
+      "text": "The only thing that interferes with my learning is my education.",
+      "author": "Albert Einstein",
+      "category": "Learning"
+    },
+    {
+      "text": "An investment in knowledge pays the best interest.",
+      "author": "Benjamin Franklin",
+      "category": "Knowledge"
+    },
+    {
+      "text": "Knowledge is power.",
+      "author": "Francis Bacon",
+      "category": "Knowledge"
+    },
+    {
+      "text": "The beautiful thing about learning is that no one can take it away from you.",
+      "author": "B.B. King",
+      "category": "Learning"
+    },
+    {
+      "text": "Wisdom is not a product of schooling but of the lifelong attempt to acquire it.",
+      "author": "Albert Einstein",
+      "category": "Wisdom"
+    },
+    {
+      "text": "The journey of a thousand miles begins with one step.",
+      "author": "Lao Tzu",
+      "category": "Journey"
+    },
+    {
+      "text": "Life is a journey, not a destination.",
+      "author": "Ralph Waldo Emerson",
+      "category": "Journey"
+    },
+    {
+      "text": "Focus on the journey, not the destination. Joy is found not in finishing an activity but in doing it.",
+      "author": "Greg Anderson",
+      "category": "Journey"
+    },
+    {
+      "text": "Every master was once a beginner. Every pro was once an amateur. Every icon was once an unknown.",
+      "author": "Robin Sharma",
+      "category": "Beginning"
+    },
+    {
+      "text": "The expert in anything was once a beginner.",
+      "author": "Helen Hayes",
+      "category": "Beginning"
+    },
+    {
+      "text": "What you get by achieving your goals is not as important as what you become by achieving your goals.",
+      "author": "Zig Ziglar",
+      "category": "Achievement"
+    },
+    {
+      "text": "A goal is not always meant to be reached, it often serves simply as something to aim at.",
+      "author": "Bruce Lee",
+      "category": "Goals"
+    },
+    {
+      "text": "Set your goals high, and don't stop till you get there.",
+      "author": "Bo Jackson",
+      "category": "Goals"
+    },
+    {
+      "text": "Goals are dreams with deadlines.",
+      "author": "Diana Scharf",
+      "category": "Goals"
+    },
+    {
+      "text": "A goal without a plan is just a wish.",
+      "author": "Antoine de Saint-Exupéry",
+      "category": "Planning"
+    },
+    {
+      "text": "By failing to prepare, you are preparing to fail.",
+      "author": "Benjamin Franklin",
+      "category": "Preparation"
+    },
+    {
+      "text": "If you fail to plan, you plan to fail.",
+      "author": "Benjamin Franklin",
+      "category": "Planning"
+    },
+    {
+      "text": "Success is where preparation and opportunity meet.",
+      "author": "Bobby Unser",
+      "category": "Success"
+    },
+    {
+      "text": "Luck is what happens when preparation meets opportunity.",
+      "author": "Seneca",
+      "category": "Opportunity"
+    },
+    {
+      "text": "Opportunities don't happen. You create them.",
+      "author": "Chris Grosser",
+      "category": "Opportunity"
+    },
+    {
+      "text": "The pessimist sees difficulty in every opportunity. The optimist sees opportunity in every difficulty.",
+      "author": "Winston Churchill",
+      "category": "Perspective"
+    },
+    {
+      "text": "Your perspective on life comes from the cage you were held captive in.",
+      "author": "Shannon L. Alder",
+      "category": "Perspective"
+    },
+    {
+      "text": "It's not what you look at that matters, it's what you see.",
+      "author": "Henry David Thoreau",
+      "category": "Perspective"
+    },
+    {
+      "text": "The only way to make sense out of change is to plunge into it, move with it, and join the dance.",
+      "author": "Alan Watts",
+      "category": "Change"
+    },
+    {
+      "text": "Change your life today. Don't gamble on the future, act now, without delay.",
+      "author": "Simone de Beauvoir",
+      "category": "Change"
+    },
+    {
+      "text": "Progress is impossible without change, and those who cannot change their minds cannot change anything.",
+      "author": "George Bernard Shaw",
+      "category": "Change"
+    },
+    {
+      "text": "If you don't like something, change it. If you can't change it, change your attitude.",
+      "author": "Maya Angelou",
+      "category": "Change"
+    },
+    {
+      "text": "Yesterday is gone. Tomorrow has not yet come. We have only today. Let us begin.",
+      "author": "Mother Teresa",
+      "category": "Present"
+    },
+    {
+      "text": "The power of now is the power of presence.",
+      "author": "Eckhart Tolle",
+      "category": "Presence"
+    },
+    {
+      "text": "Be present in all things and thankful for all things.",
+      "author": "Maya Angelou",
+      "category": "Presence"
+    },
+    {
+      "text": "Life is available only in the present moment.",
+      "author": "Thich Nhat Hanh",
+      "category": "Present"
+    },
+    {
+      "text": "The present moment is the only moment available to us, and it is the door to all moments.",
+      "author": "Thich Nhat Hanh",
+      "category": "Present"
+    },
+    {
+      "text": "Doubt kills more dreams than failure ever will.",
+      "author": "Suzy Kassem",
+      "category": "Confidence"
+    },
+    {
+      "text": "Believe in yourself and all that you are. Know that there is something inside you that is greater than any obstacle.",
+      "author": "Christian D. Larson",
+      "category": "Self-Belief"
+    },
+    {
+      "text": "You are braver than you believe, stronger than you seem, and smarter than you think.",
+      "author": "A.A. Milne",
+      "category": "Self-Belief"
+    },
+    {
+      "text": "Trust yourself. You know more than you think you do.",
+      "author": "Benjamin Spock",
+      "category": "Self-Trust"
+    },
+    {
+      "text": "The way to develop self-confidence is to do the thing you fear and get a record of successful experiences behind you.",
+      "author": "William Jennings Bryan",
+      "category": "Confidence"
+    },
+    {
+      "text": "Self-confidence is the first requisite to great undertakings.",
+      "author": "Samuel Johnson",
+      "category": "Confidence"
+    },
+    {
+      "text": "With confidence, you have won before you have started.",
+      "author": "Marcus Garvey",
+      "category": "Confidence"
+    },
+    {
+      "text": "Confidence is not 'they will like me'. Confidence is 'I'll be fine if they don't'.",
+      "author": "Christina Grimmie",
+      "category": "Confidence"
+    },
+    {
+      "text": "Nothing can dim the light that shines from within.",
+      "author": "Maya Angelou",
+      "category": "Inner Light"
+    },
+    {
+      "text": "You are enough just as you are.",
+      "author": "Meghan Markle",
+      "category": "Self-Worth"
+    },
+    {
+      "text": "Your value doesn't decrease based on someone's inability to see your worth.",
+      "author": "Anonymous",
+      "category": "Self-Worth"
+    },
+    {
+      "text": "Know your worth. Then add tax.",
+      "author": "Anonymous",
+      "category": "Self-Worth"
+    },
+    {
+      "text": "You are valuable because you exist. Not because of what you do or what you have done, but simply because you are.",
+      "author": "Max Lucado",
+      "category": "Self-Worth"
+    }
+  ]
+}
