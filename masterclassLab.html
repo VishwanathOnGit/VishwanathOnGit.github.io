@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>90-Day Mastery Lab – Personal & Technical Growth Tracks</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #f5f5f7;
+      --bg-soft: #f9fafb;
+      --bg-elevated: #ffffff;
+      --sidebar-bg: #0f172a;
+      --sidebar-bg-soft: #020617;
+      --sidebar-border: rgba(148, 163, 184, 0.4);
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --text-soft: #9ca3af;
+      --border-subtle: #d2d2d7;
+      --accent: #2563eb;
+      --accent-soft: rgba(37, 99, 235, 0.12);
+      --accent-strong: #1d4ed8;
+      --accent-alt: #ec4899;
+      --radius-md: 12px;
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 18px 50px rgba(15, 23, 42, 0.12);
+      --shadow-softer: 0 12px 32px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #ffffff 0, #eef2ff 42%, #e5e7eb 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding: 18px;
+    }
+
+    @media (min-width: 960px) {
+      body {
+        padding: 26px 36px 32px;
+      }
+    }
+
+    .shell {
+      max-width: 1200px;
+      margin: 0 auto 32px auto;
+      border-radius: 24px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(210, 210, 215, 0.8);
+      display: grid;
+      grid-template-columns: minmax(250px, 280px) minmax(0, 1fr);
+      min-height: 540px;
+    }
+
+    @media (max-width: 880px) {
+      .shell {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* Sidebar */
+
+    .sidebar {
+      background: radial-gradient(circle at top left, #1e293b 0, #020617 55%);
+      color: #e5e7eb;
+      padding: 18px 16px 18px;
+      border-right: 1px solid var(--sidebar-border);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    @media (max-width: 880px) {
+      .sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--sidebar-border);
+      }
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 10% 0%, #0ea5e9, #6366f1 45%, #ec4899 100%);
+      box-shadow: 0 12px 30px rgba(79, 70, 229, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 600;
+      color: #f9fafb;
+    }
+
+    .brand-title {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-subtitle {
+      font-size: 11px;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-top: 2px;
+    }
+
+    .sidebar-intro {
+      font-size: 12px;
+      color: #cbd5f5;
+    }
+
+    .sidebar-intro strong {
+      font-weight: 500;
+      color: #e5e7eb;
+    }
+
+    .overall-progress {
+      border-radius: 14px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.95), #020617);
+      padding: 10px;
+      font-size: 12px;
+      display: grid;
+      gap: 6px;
+    }
+
+    .overall-label-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .overall-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #9ca3af;
+    }
+
+    .overall-value {
+      font-size: 13px;
+      font-weight: 500;
+      color: #e5e7eb;
+    }
+
+    .overall-progress-bar {
+      position: relative;
+      width: 100%;
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      overflow: hidden;
+    }
+
+    .overall-progress-fill {
+      position: absolute;
+      inset: 0;
+      width: 0%;
+      background: linear-gradient(90deg, #22c55e, #38bdf8, #a855f7);
+      box-shadow: 0 0 18px rgba(56, 189, 248, 0.7);
+      transition: width 0.4s ease-out;
+    }
+
+    .overall-note {
+      font-size: 11px;
+      color: #9ca3af;
+    }
+
+    .track-list {
+      margin-top: 6px;
+      display: grid;
+      gap: 6px;
+      font-size: 12px;
+    }
+
+    .track-button {
+      width: 100%;
+      padding: 7px 9px;
+      border-radius: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.9), #020617);
+      color: #e5e7eb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: border-color 0.15s ease, background 0.15s ease,
+        transform 0.12s ease, box-shadow 0.12s ease;
+    }
+
+    .track-button:hover {
+      border-color: rgba(96, 165, 250, 0.9);
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.7);
+      transform: translateY(-1px);
+    }
+
+    .track-button.active {
+      border-color: rgba(129, 230, 217, 0.95);
+      background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.25), #020617);
+      box-shadow: 0 14px 34px rgba(16, 185, 129, 0.7);
+    }
+
+    .track-main {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      text-align: left;
+    }
+
+    .track-name {
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .track-tone {
+      font-size: 11px;
+      color: #9ca3af;
+    }
+
+    .track-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 2px;
+      font-size: 11px;
+      color: #9ca3af;
+    }
+
+    .track-progress-pill {
+      border-radius: 999px;
+      padding: 1px 7px;
+      border: 1px solid rgba(129, 140, 248, 0.6);
+      background: rgba(15, 23, 42, 0.9);
+      color: #e5e7eb;
+      font-size: 10px;
+    }
+
+    .track-days {
+      font-size: 10px;
+    }
+
+    /* Main area */
+
+    .main {
+      padding: 18px 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    @media (min-width: 960px) {
+      .main {
+        padding: 20px 22px 22px;
+      }
+    }
+
+    .main-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      border-bottom: 1px solid rgba(229, 231, 235, 0.9);
+      padding-bottom: 10px;
+    }
+
+    .main-title-block {
+      max-width: 520px;
+    }
+
+    .main-kicker {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-soft);
+      margin-bottom: 3px;
+    }
+
+    .main-title {
+      font-size: 20px;
+      font-weight: 620;
+      letter-spacing: -0.03em;
+      margin-bottom: 4px;
+    }
+
+    .main-title span.highlight {
+      background: linear-gradient(135deg, var(--accent), var(--accent-alt));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .main-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .track-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: flex-end;
+    }
+
+    .tone-pill {
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-soft);
+      font-size: 11px;
+      padding: 4px 8px;
+      color: var(--text-muted);
+      display: inline-flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .tone-pill span.kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      font-size: 10px;
+      color: var(--text-soft);
+    }
+
+    .tone-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      border: 1px solid var(--accent);
+    }
+
+    .track-progress-bar-wrap {
+      border-radius: 14px;
+      border: 1px solid rgba(209, 213, 219, 0.95);
+      background: linear-gradient(145deg, #ffffff, #f9fafb);
+      padding: 9px 11px;
+      display: grid;
+      gap: 6px;
+      font-size: 12px;
+      box-shadow: var(--shadow-softer);
+    }
+
+    .track-progress-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .track-progress-label {
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
+    .track-progress-value {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent-strong);
+    }
+
+    .track-progress-bar {
+      position: relative;
+      width: 100%;
+      height: 7px;
+      border-radius: 999px;
+      background: #e5e7eb;
+      overflow: hidden;
+    }
+
+    .track-progress-fill {
+      position: absolute;
+      inset: 0;
+      width: 0%;
+      background: linear-gradient(90deg, #22c55e, #16a34a);
+      box-shadow: 0 0 16px rgba(22, 163, 74, 0.65);
+      transition: width 0.3s ease-out;
+    }
+
+    .track-progress-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
+    /* Layout: summary + day view */
+
+    .content-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(0, 1.4fr);
+      gap: 14px;
+    }
+
+    @media (max-width: 960px) {
+      .content-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .summary-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(209, 213, 219, 0.95);
+      background: linear-gradient(150deg, #ffffff, #f9fafb);
+      padding: 10px 11px 11px;
+      font-size: 12px;
+      box-shadow: var(--shadow-softer);
+      display: grid;
+      gap: 7px;
+    }
+
+    .summary-section-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-soft);
+      margin-bottom: 1px;
+    }
+
+    .summary-body {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .summary-list {
+      list-style: none;
+      display: grid;
+      gap: 4px;
+      margin-top: 4px;
+    }
+
+    .summary-list li {
+      display: flex;
+      gap: 6px;
+    }
+
+    .summary-list li::before {
+      content: "•";
+      color: var(--accent);
+      font-size: 15px;
+      margin-top: -1px;
+    }
+
+    .module-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 7px;
+      margin-top: 2px;
+    }
+
+    .module-chip {
+      border-radius: 12px;
+      border: 1px solid rgba(209, 213, 219, 0.95);
+      background: #ffffff;
+      padding: 6px 7px;
+      font-size: 11px;
+    }
+
+    .module-chip strong {
+      display: block;
+      font-size: 11px;
+      margin-bottom: 2px;
+    }
+
+    /* Day list + view */
+
+    .day-panel {
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(209, 213, 219, 0.95);
+      background: radial-gradient(circle at top right, #eff6ff 0, #ffffff 45%);
+      padding: 9px 10px 10px;
+      box-shadow: var(--shadow-softer);
+      display: grid;
+      grid-template-rows: auto auto minmax(0, 1fr) auto;
+      gap: 7px;
+      max-height: 540px;
+    }
+
+    .day-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .day-title-block {
+      max-width: 300px;
+    }
+
+    .day-title {
+      font-size: 14px;
+      font-weight: 540;
+      letter-spacing: -0.02em;
+    }
+
+    .day-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .day-meta {
+      font-size: 11px;
+      color: var(--text-soft);
+      text-align: right;
+    }
+
+    .day-meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      border-radius: var(--radius-pill);
+      border: 1px dashed rgba(148, 163, 184, 0.9);
+      padding: 2px 7px;
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .day-meta-pill span.kicker {
+      font-size: 10px;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+    }
+
+    .day-meta-pill span.value {
+      color: var(--accent-strong);
+    }
+
+    .day-lists-wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.05fr);
+      gap: 8px;
+      font-size: 12px;
+    }
+
+    @media (max-width: 640px) {
+      .day-lists-wrap {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .day-list-panel {
+      border-radius: 12px;
+      border: 1px solid rgba(209, 213, 219, 0.95);
+      background: rgba(255, 255, 255, 0.95);
+      padding: 6px 7px 7px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .day-list-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      color: var(--text-soft);
+    }
+
+    .day-select-row {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .day-select {
+      flex: 1;
+      min-width: 130px;
+      padding: 4px 6px;
+      border-radius: 999px;
+      border: 1px solid rgba(209, 213, 219, 0.95);
+      background: #f9fafb;
+      font-size: 12px;
+      color: var(--text-main);
+    }
+
+    .day-complete-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(34, 197, 94, 0.4);
+      background: rgba(240, 253, 250, 0.9);
+      padding: 3px 9px;
+      font-size: 11px;
+      color: #047857;
+      cursor: pointer;
+    }
+
+    .day-complete-toggle span.box {
+      width: 11px;
+      height: 11px;
+      border-radius: 3px;
+      border: 1px solid rgba(34, 197, 94, 0.6);
+      background: #ecfdf5;
+      display: inline-block;
+      position: relative;
+    }
+
+    .day-complete-toggle.completed span.box::after {
+      content: "✓";
+      position: absolute;
+      inset: -1px;
+      font-size: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .day-scroll {
+      margin-top: 2px;
+      padding-right: 3px;
+      max-height: 260px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(148, 163, 184, 0.9) transparent;
+    }
+
+    .day-scroll::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .day-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .day-scroll::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, rgba(148, 163, 184, 0.9), rgba(107, 114, 128, 0.9));
+      border-radius: 999px;
+    }
+
+    .day-section {
+      margin-bottom: 6px;
+    }
+
+    .day-section h4 {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      color: var(--text-soft);
+      margin-bottom: 2px;
+    }
+
+    .day-section p {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .day-bullets {
+      list-style: none;
+      margin-top: 3px;
+      display: grid;
+      gap: 3px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .day-bullets li {
+      display: flex;
+      gap: 6px;
+    }
+
+    .day-bullets li::before {
+      content: "–";
+      color: var(--accent-strong);
+      margin-top: -1px;
+    }
+
+    .day-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--text-soft);
+      margin-top: 2px;
+    }
+
+    .day-footer span.accent {
+      color: var(--accent-strong);
+    }
+
+    .view-mode-pill {
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(209, 213, 219, 0.95);
+      background: rgba(255, 255, 255, 0.95);
+      padding: 2px 7px;
+      font-size: 11px;
+    }
+
+    /* Print styles */
+
+    @media print {
+      @page {
+        margin: 0;
+        size: 8.5in 999in;
+      }
+
+      body {
+        margin: 0;
+        padding: 0.4in 0.6in;
+        background: #fff;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+
+      .shell, .dashboard, .container, main {
+        max-width: 100% !important;
+        width: 100% !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        border: none !important;
+      }
+
+      section, [class*="section"], .header {
+        margin-bottom: 20px !important;
+        border: none !important;
+      }
+
+      [class*="card"], [class*="Card"] {
+        padding: 18px !important;
+        box-shadow: none !important;
+        border: 1px solid rgba(0,0,0,0.08);
+      }
+
+      [class*="grid"], [class*="row"] {
+        gap: 10px !important;
+        margin-bottom: 20px !important;
+      }
+
+      [class*="chart"], [class*="Chart"] {
+        height: 240px !important;
+      }
+
+      [class*="chart"][class*="tall"], [class*="Chart"][class*="tall"],
+      [class*="chart"][class*="full"], [class*="Chart"][class*="full"] {
+        height: 280px !important;
+      }
+
+      [class*="quote-list"], [class*="scroll"],
+      [style*="max-height"], [style*="overflow"] {
+        max-height: none !important;
+        overflow: visible !important;
+      }
+
+      [class*="tab-panel"], [class*="tabpanel"] {
+        display: block !important;
+      }
+
+      [class*="tab-bar"], [class*="tabs"]:not([class*="panel"]) {
+        display: none !important;
+      }
+
+      [class*="fade"], [class*="animate"], [class*="slide"] {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+
+      button, [role="button"], .interactive-only {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div>
+        <div class="brand">
+          <div class="brand-mark">90</div>
+          <div>
+            <div class="brand-title">90-Day Mastery Lab</div>
+            <div class="brand-subtitle">Personal &amp; technical growth</div>
+          </div>
+        </div>
+        <p class="sidebar-intro" style="margin-top: 8px;">
+          Choose a <strong>track</strong>, pick your <strong>day</strong>, and use the
+          prompts to move 1% forward. Your progress is saved locally in this browser.
+        </p>
+      </div>
+
+      <div class="overall-progress">
+        <div class="overall-label-row">
+          <span class="overall-label">Overall progress</span>
+          <span class="overall-value" id="overallProgressLabel">0 of 900 days</span>
+        </div>
+        <div class="overall-progress-bar">
+          <div class="overall-progress-fill" id="overallProgressBar"></div>
+        </div>
+        <p class="overall-note">
+          Each track is a 90-day journey. You can run one at a time or in parallel.
+        </p>
+      </div>
+
+      <div>
+        <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color:#9ca3af; margin-bottom:4px;">
+          Tracks
+        </div>
+        <div class="track-list" id="trackList">
+          <!-- Boundaries -->
+          <button class="track-button" data-track-id="boundaries">
+            <div class="track-main">
+              <div class="track-name">Boundaries (90-Day Deep Practice)</div>
+              <div class="track-tone">Emotional energy · Self-respect</div>
+            </div>
+            <div class="track-meta">
+              <div class="track-progress-pill">0/90</div>
+              <div class="track-days">Soft, therapeutic, kind</div>
+            </div>
+          </button>
+          <!-- Storytelling -->
+          <button class="track-button" data-track-id="storytelling">
+            <div class="track-main">
+              <div class="track-name">Storytelling (BLR → Kashmir → Kanyakumari → BLR)</div>
+              <div class="track-tone">Narrative craft · Travel metaphor</div>
+            </div>
+            <div class="track-meta">
+              <div class="track-progress-pill">0/90</div>
+              <div class="track-days">Narrative, reflective, playful</div>
+            </div>
+          </button>
+          <!-- Senior SWE -->
+          <button class="track-button" data-track-id="senior-swe">
+            <div class="track-main">
+              <div class="track-name">Senior Software Engineer</div>
+              <div class="track-tone">Technical depth · Ownership</div>
+            </div>
+            <div class="track-meta">
+              <div class="track-progress-pill">0/90</div>
+              <div class="track-days">Practical, engineering-focused</div>
+            </div>
+          </button>
+          <!-- AI Engineer -->
+          <button class="track-button" data-track-id="ai-engineer">
+            <div class="track-main">
+              <div class="track-name">AI Engineer</div>
+              <div class="track-tone">Applied AI · Systems</div>
+            </div>
+            <div class="track-meta">
+              <div class="track-progress-pill">0/90</div>
+              <div class="track-days">Curious, experimental, grounded</div>
+            </div>
+          </button>
+          <!-- Critical Thinking -->
+          <button class="track-button" data-track-id="critical-thinking">
+            <div class="track-main">
+              <div class="track-name">Critical Thinking</div>
+              <div class="track-tone">Socratic · Clarity</div>
+            </div>
+            <div class="track-meta">
+              <div class="track-progress-pill">0/90</div>
+              <div class="track-days">Calm, analytical, curious</div>
+            </div>
+          </button>
+          <!-- Staff Engineer -->
+          <button class="track-button" data-track-id="staff-engineer">
+            <div class="track-main">
+              <div class="track-name">Staff Engineer</div>
+              <div class="track-tone">Systems · Influence</div>
+            </div>
+            <div class="track-meta">
+              <div class="track-progress-pill">0/90</div>
+              <div class="track-days">Strategic, calm, big-picture</div>
+            </div>
+          </button>
+          <!-- Mindset -->
+          <button class="track-button" data-track-id="mindset">
+            <div class="track-main">
+              <div class="track-name">Mindset</div>
+              <div class="track-tone">Inner game · Resilience</div>
+            </div>
+            <div class="track-meta">
+              <div class="track-progress-pill">0/90</div>
+              <div class="track-days">Encouraging, honest, no-fluff</div>
+            </div>
+          </button>
+          <!-- Life Lessons -->
+          <button class="track-button" data-track-id="life-lessons">
+            <div class="track-main">
+              <div class="track-name">Life Lessons</div>
+              <div class="track-tone">Philosophy · Practice</div>
+            </div>
+            <div class="track-meta">
+              <div class="track-progress-pill">0/90</div>
+              <div class="track-days">Philosophical, gentle, grounded</div>
+            </div>
+          </button>
+          <!-- Quotes -->
+          <button class="track-button" data-track-id="quotes">
+            <div class="track-main">
+              <div class="track-name">Quotes as Daily Anchors</div>
+              <div class="track-tone">Micro-prompts</div>
+            </div>
+            <div class="track-meta">
+              <div class="track-progress-pill">0/90</div>
+              <div class="track-days">Light, poetic, flexible</div>
+            </div>
+          </button>
+          <!-- AI Masterclass -->
+          <button class="track-button" data-track-id="ai-masterclass">
+            <div class="track-main">
+              <div class="track-name">AI Masterclass: Positioning Yourself</div>
+              <div class="track-tone">Career direction · Strategy</div>
+            </div>
+            <div class="track-meta">
+              <div class="track-progress-pill">0/90</div>
+              <div class="track-days">Career-focused, calm, realistic</div>
+            </div>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="main-header">
+        <div class="main-title-block">
+          <div class="main-kicker" id="trackKicker">Select a track to begin</div>
+          <h1 class="main-title" id="trackTitle">
+            Choose a <span class="highlight">90-day journey</span> on the left.
+          </h1>
+          <p class="main-subtitle" id="trackSubtitle">
+            Each track has its own tone, focus, and structure — but they all follow the
+            same simple rhythm: learn, reflect, practice. Your progress is stored in
+            your browser so you can close the page and come back anytime.
+          </p>
+        </div>
+        <div class="track-pill-row">
+          <div class="tone-pill">
+            <span class="tone-dot"></span>
+            <div>
+              <div class="tone-pill-label" style="font-size:11px;">
+                <span class="kicker">View</span> <span id="toneLabel">Overview</span>
+              </div>
+              <div style="font-size: 11px; color: var(--text-soft);" id="toneNote">
+                Pick a track to see its flavour and teaching style.
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="track-progress-bar-wrap">
+        <div class="track-progress-row">
+          <span class="track-progress-label" id="trackProgressLabel">
+            Track progress (no track selected)
+          </span>
+          <span class="track-progress-value" id="trackProgressValue">0%</span>
+        </div>
+        <div class="track-progress-bar">
+          <div class="track-progress-fill" id="trackProgressBar"></div>
+        </div>
+        <div class="track-progress-meta">
+          <span id="trackProgressDays">0 of 90 days completed</span>
+          <span id="trackProgressHint">Tip: start with Day 1 and let the 90 days take care of themselves.</span>
+        </div>
+      </section>
+
+      <section class="content-layout">
+        <article class="summary-card" id="summaryCard">
+          <div>
+            <div class="summary-section-title">Track overview</div>
+            <p class="summary-body" id="summaryBody">
+              When you select a track, you’ll see a short overview here: what this
+              journey is for, how it’s structured, and how the tone will feel. On the
+              right, you’ll be able to pick any of the 90 days and mark it complete.
+            </p>
+          </div>
+          <div>
+            <div class="summary-section-title">Modules / phases</div>
+            <div class="module-grid" id="moduleGrid">
+              <!-- modules per track -->
+            </div>
+          </div>
+          <div>
+            <div class="summary-section-title">How to use this website</div>
+            <ul class="summary-list">
+              <li>Pick one primary track for the next 90 days (you can always switch).</li>
+              <li>Do <strong>one day at a time</strong>: read, reflect, and do one concrete practice.</li>
+              <li>Click “Mark complete” for that day — your browser remembers it for you.</li>
+              <li>When you finish a track, export or print the page as a PDF for your records.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="day-panel">
+          <div class="day-header-row">
+            <div class="day-title-block">
+              <h2 class="day-title" id="dayTitle">No day selected yet</h2>
+              <p class="day-subtitle" id="daySubtitle">
+                Choose a track and day to see today’s focus, prompts, and suggested practice.
+              </p>
+            </div>
+            <div class="day-meta">
+              <div class="day-meta-pill">
+                <span class="kicker">Status</span>
+                <span class="value" id="dayStatus">Not started</span>
+              </div>
+              <div style="margin-top:4px;" id="dayPhaseLabel">—</div>
+            </div>
+          </div>
+
+          <div class="day-lists-wrap">
+            <div class="day-list-panel">
+              <div class="day-list-title">Select track &amp; day</div>
+              <div class="day-select-row">
+                <select class="day-select" id="daySelector">
+                  <option value="">Day 1 of 90, Day 2 of 90, … will appear here</option>
+                </select>
+                <button class="day-complete-toggle" id="completeToggle" type="button" disabled>
+                  <span class="box"></span>
+                  <span id="completeLabel">Mark complete</span>
+                </button>
+              </div>
+            </div>
+            <div class="day-list-panel">
+              <div class="day-list-title">Daily rhythm</div>
+              <p style="font-size: 12px; color: var(--text-muted);">
+                Every day is built around <strong>Learn · Reflect · Practice</strong>. The copy
+                on the left adapts to the track you’re in — from gentle (Boundaries) to
+                technical (Staff Engg.).
+              </p>
+            </div>
+          </div>
+
+          <div class="day-scroll" id="dayContent">
+            <div class="day-section">
+              <h4>Learn</h4>
+              <p>
+                Pick a track and day to see a short idea for today. For example: a new
+                boundary pattern, a story beat from the Bangalore→Kashmir→Kanyakumari
+                journey, or a senior engineer leadership lens.
+              </p>
+            </div>
+            <div class="day-section">
+              <h4>Reflect</h4>
+              <p>
+                Use your favourite notes app or journal to answer the reflection prompts.
+                The goal is honest, specific thinking — not perfect writing.
+              </p>
+            </div>
+            <div class="day-section">
+              <h4>Practice</h4>
+              <p>
+                Choose <strong>one concrete action</strong> for the day. Small and consistent
+                beats ambitious and unsustainable.
+              </p>
+            </div>
+          </div>
+
+          <div class="day-footer">
+            <span id="dayFooterNote">
+              Your browser stores your progress locally. Clearing cache or switching devices resets it.
+            </span>
+            <span class="view-mode-pill">
+              <strong>Mode:</strong> <span class="accent" id="viewModeLabel">Single-day view</span>
+            </span>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const TOTAL_DAYS_PER_TRACK = 90;
+
+    const tracks = [
+      {
+        id: "boundaries",
+        name: "Boundaries (90-Day Deep Practice)",
+        kicker: "Emotional energy · Self-respect",
+        subtitle:
+          "Gentle, therapeutic tone. This track extends your 30-day boundaries work into a 90-day gym for your emotional energy: awareness, clarity, communication, and long-term maintenance.",
+        toneLabel: "Soft, therapeutic, kind",
+        toneNote: "Perfect when you feel drained, overcommitted, or guilty about saying no.",
+        style: "gentle",
+        modules: [
+          { index: 1, name: "Noticing", summary: "Days 1–10 · Spot where you leak energy and override yourself." },
+          { index: 2, name: "Patterns", summary: "Days 11–20 · Family roles, people-pleasing, rigid walls." },
+          { index: 3, name: "Clarity", summary: "Days 21–30 · Values, non-negotiables, priorities." },
+          { index: 4, name: "Language", summary: "Days 31–40 · Scripts, tone, and body language for limits." },
+          { index: 5, name: "Work & Time", summary: "Days 41–50 · Sustainable boundaries at work and with time." },
+          { index: 6, name: "Relationships", summary: "Days 51–60 · Friends, family, dating — different edges." },
+          { index: 7, name: "Self-boundaries", summary: "Days 61–70 · Sleep, screens, self-talk, promises to yourself." },
+          { index: 8, name: "Maintenance", summary: "Days 71–80 · Handling pushback, wobble, and repair." },
+          { index: 9, name: "Blueprint", summary: "Days 81–90 · Finalize your personal boundaries playbook." }
+        ]
+      },
+      {
+        id: "storytelling",
+        name: "Storytelling (Bangalore → Kashmir → Kanyakumari → Bangalore)",
+        kicker: "Narrative craft · Travel metaphor",
+        subtitle:
+          "Warm, cinematic tone. You follow one long journey — Bangalore to Kashmir to Kanyakumari and back — and use each leg of the trip to learn a principle of storytelling and of becoming.",
+        toneLabel: "Narrative, reflective, playful",
+        toneNote:
+          "Great if you want to turn your own life into meaningful stories without feeling like you’re performing.",
+        style: "narrative",
+        modules: [
+          { index: 1, name: "Bangalore: The Restless Beginning", summary: "Days 1–10 · Why leave? The call to adventure in your own life." },
+          { index: 2, name: "Northbound: Through the Plains", summary: "Days 11–20 · Transitions, minor characters, and small detours." },
+          { index: 3, name: "Kashmir: High Places & Thin Air", summary: "Days 21–30 · Awe, fear, and seeing yourself from a higher vantage." },
+          { index: 4, name: "Crossing India: Between Peaks & Ocean", summary: "Days 31–40 · Conflict in the middle of the story — inner and outer." },
+          { index: 5, name: "Kanyakumari: Ocean’s Edge", summary: "Days 41–50 · Endings, goodbyes, and meaning-making at turning points." },
+          { index: 6, name: "The Long Way Home", summary: "Days 51–60 · Integration — how travel changes the traveller." },
+          { index: 7, name: "Return to Bangalore", summary: "Days 61–70 · Coming home as a different person. Re-meeting old places." },
+          { index: 8, name: "Telling the Journey", summary: "Days 71–80 · Versions of the story for friends, work, and strangers." },
+          { index: 9, name: "Writing Your Own Map", summary: "Days 81–90 · Use the trip as a template to narrate your real life." }
+        ]
+      },
+      {
+        id: "senior-swe",
+        name: "Senior Software Engineer",
+        kicker: "Technical depth · Ownership",
+        subtitle:
+          "Pragmatic, direct tone. This track helps you grow from 'strong individual contributor' to 'trusted senior': architecture, debugging, ownership, mentoring, and impact.",
+        toneLabel: "Practical, engineering-focused",
+        toneNote: "Use this to level up your engineering judgement and presence at work.",
+        style: "technical",
+        modules: [
+          { index: 1, name: "Foundations", summary: "Days 1–10 · What 'senior' really means beyond years of experience." },
+          { index: 2, name: "Owning Problems", summary: "Days 11–20 · From ticket taker to problem owner." },
+          { index: 3, name: "Design & Tradeoffs", summary: "Days 21–30 · Reasoning about systems, not just code." },
+          { index: 4, name: "Debugging & Reliability", summary: "Days 31–40 · Calm under pressure, root-cause thinking." },
+          { index: 5, name: "Collaboration", summary: "Days 41–50 · Working with PM, design, QA, infra, stakeholders." },
+          { index: 6, name: "Mentoring", summary: "Days 51–60 · Growing others without becoming a bottleneck." },
+          { index: 7, name: "Execution Systems", summary: "Days 61–70 · Personal systems for focus, planning, and learning." },
+          { index: 8, name: "Influence", summary: "Days 71–80 · Communicating proposals, writing good docs, saying no." },
+          { index: 9, name: "Portfolio & Direction", summary: "Days 81–90 · Designing the next 2–3 years of your career." }
+        ]
+      },
+      {
+        id: "ai-engineer",
+        name: "AI Engineer",
+        kicker: "Applied AI · Systems",
+        subtitle:
+          "Exploratory, systems-minded tone. This track guides you through foundations of ML + modern LLMs, toolchains, evaluation, and building AI-powered features that ship.",
+        toneLabel: "Curious, experimental, grounded",
+        toneNote: "Ideal if you want to build with AI, not just read about it.",
+        style: "ai-tech",
+        modules: [
+          { index: 1, name: "Orientation", summary: "Days 1–10 · Landscape: classic ML, deep learning, LLMs, tools." },
+          { index: 2, name: "Foundations Refresh", summary: "Days 11–20 · Probability, vectors, loss, gradient at a practical level." },
+          { index: 3, name: "LLM Basics", summary: "Days 21–30 · Tokens, prompting, context windows, embeddings." },
+          { index: 4, name: "Building Blocks", summary: "Days 31–40 · Retrieval, tools, pipelines, evaluation basics." },
+          { index: 5, name: "Product Thinking", summary: "Days 41–50 · Where AI actually adds value in products." },
+          { index: 6, name: "Reliability & Safety", summary: "Days 51–60 · Guardrails, monitoring, feedback loops." },
+          { index: 7, name: "Scaling & Infra", summary: "Days 61–70 · Costs, latency, caching, hybrid architectures." },
+          { index: 8, name: "Portfolio Projects", summary: "Days 71–80 · End-to-end projects you could show or ship." },
+          { index: 9, name: "Career Angle", summary: "Days 81–90 · Positioning yourself as an AI-capable engineer." }
+        ]
+      },
+      {
+        id: "critical-thinking",
+        name: "Critical Thinking",
+        kicker: "Socratic · Clarity",
+        subtitle:
+          "Socratic, questioning tone. This track helps you slow down your thinking, challenge assumptions, and reason clearly about complex problems at work and in life.",
+        toneLabel: "Calm, analytical, curious",
+        toneNote: "Best if you want sharper judgement without becoming cynical.",
+        style: "socratic",
+        modules: [
+          { index: 1, name: "Noticing Thoughts", summary: "Days 1–10 · See the stories your mind tells automatically." },
+          { index: 2, name: "Questions That Cut", summary: "Days 11–20 · Basic tools: why, how do we know, what else." },
+          { index: 3, name: "Structures & Models", summary: "Days 21–30 · Mental models and when to ignore them." },
+          { index: 4, name: "Bias & Blindspots", summary: "Days 31–40 · How your brain bends the data." },
+          { index: 5, name: "Arguments & Evidence", summary: "Days 41–50 · Reasoning clearly in writing and speech." },
+          { index: 6, name: "Decisions", summary: "Days 51–60 · Thinking in scenarios, not predictions." },
+          { index: 7, name: "Conflict & Disagreement", summary: "Days 61–70 · Staying curious when others disagree." },
+          { index: 8, name: "Meta-Thinking", summary: "Days 71–80 · Seeing how you think while you’re thinking." },
+          { index: 9, name: "Designing Your Mind", summary: "Days 81–90 · Habits that keep your thinking sharp." }
+        ]
+      },
+      {
+        id: "staff-engineer",
+        name: "Staff Engineer",
+        kicker: "Systems · Influence",
+        subtitle:
+          "Strategic, systems-level tone. This track is about moving from 'best individual' to 'force-multiplier': org design, alignment, technical strategy, and leading without authority.",
+        toneLabel: "Strategic, calm, big-picture",
+        toneNote: "Useful if you’re eyeing Staff+ roles or already in one and want structure.",
+        style: "staff",
+        modules: [
+          { index: 1, name: "Role Clarity", summary: "Days 1–10 · What Staff actually does in your context." },
+          { index: 2, name: "Systems Sight", summary: "Days 11–20 · Seeing architectures and organisations as systems." },
+          { index: 3, name: "Technical Strategy", summary: "Days 21–30 · From RFCs to multi-quarter roadmaps." },
+          { index: 4, name: "Influence & Trust", summary: "Days 31–40 · How you show up in rooms that decide things." },
+          { index: 5, name: "Cross-Team Execution", summary: "Days 41–50 · Herding projects across boundaries." },
+          { index: 6, name: "Mentoring at Scale", summary: "Days 51–60 · Leveling up many engineers, not just a few." },
+          { index: 7, name: "Firefighting vs. Fire Prevention", summary: "Days 61–70 · Steering teams away from repeated crises." },
+          { index: 8, name: "Career Capital", summary: "Days 71–80 · Signature projects, narratives, sponsorship." },
+          { index: 9, name: "Your Next Plateau", summary: "Days 81–90 · Deciding what Staff+ means for you long-term." }
+        ]
+      },
+      {
+        id: "mindset",
+        name: "Mindset",
+        kicker: "Inner game · Resilience",
+        subtitle:
+          "Supportive, coach-like tone. This track focuses on how you relate to challenge, failure, success, and yourself — moving from self-attack to self-trust.",
+        toneLabel: "Encouraging, honest, no-fluff",
+        toneNote: "Start here if you feel stuck, inconsistent, or harsh with yourself.",
+        style: "mindset",
+        modules: [
+          { index: 1, name: "Awareness", summary: "Days 1–10 · See the scripts you run automatically." },
+          { index: 2, name: "Beliefs", summary: "Days 11–20 · 'I’m the kind of person who…' — updating identity." },
+          { index: 3, name: "Failure & Feedback", summary: "Days 21–30 · Using mistakes without marinating in them." },
+          { index: 4, name: "Motivation", summary: "Days 31–40 · Discipline as self-respect, not punishment." },
+          { index: 5, name: "Emotions", summary: "Days 41–50 · Feeling without getting swallowed." },
+          { index: 6, name: "Confidence", summary: "Days 51–60 · Building it by keeping small promises." },
+          { index: 7, name: "Relationships", summary: "Days 61–70 · Boundaries + mindset in connection." },
+          { index: 8, name: "Growth Plateaus", summary: "Days 71–80 · What to do when change slows down." },
+          { index: 9, name: "Future Self", summary: "Days 81–90 · Designing how you think 1–3 years from now." }
+        ]
+      },
+      {
+        id: "life-lessons",
+        name: "Life Lessons",
+        kicker: "Philosophy · Practice",
+        subtitle:
+          "Quiet, reflective tone. This track is a curated series of small lenses: lessons about work, love, mortality, money, time, and meaning — each paired with a tiny experiment.",
+        toneLabel: "Philosophical, gentle, grounded",
+        toneNote: "Best for slow, depth-first reflection over months.",
+        style: "philosophy",
+        modules: [
+          { index: 1, name: "Self", summary: "Days 1–10 · Knowing who is living this life." },
+          { index: 2, name: "Work", summary: "Days 11–20 · Craft, career, and contribution." },
+          { index: 3, name: "Relationships", summary: "Days 21–30 · How you show up with others." },
+          { index: 4, name: "Time", summary: "Days 31–40 · Attention, seasons, and endings." },
+          { index: 5, name: "Money", summary: "Days 41–50 · Enough, trade-offs, security." },
+          { index: 6, name: "Health", summary: "Days 51–60 · Body, mind, and sustainable habits." },
+          { index: 7, name: "Play & Wonder", summary: "Days 61–70 · Awe, beauty, and rest." },
+          { index: 8, name: "Loss & Change", summary: "Days 71–80 · Grief, pivots, letting go." },
+          { index: 9, name: "Legacy", summary: "Days 81–90 · How you want to be remembered." }
+        ]
+      },
+      {
+        id: "quotes",
+        name: "Quotes as Daily Anchors",
+        kicker: "Micro-prompts",
+        subtitle:
+          "Minimal, haiku-like tone. Each day starts from a short quote (from thinkers, writers, scientists, artists) and invites you to respond in your own words.",
+        toneLabel: "Light, poetic, flexible",
+        toneNote: "Good companion track to run alongside a heavier one.",
+        style: "quotes",
+        modules: [
+          { index: 1, name: "Attention", summary: "Days 1–10 · Quotes about seeing clearly." },
+          { index: 2, name: "Courage", summary: "Days 11–20 · Quotes about fear and action." },
+          { index: 3, name: "Work", summary: "Days 21–30 · Quotes about craft and effort." },
+          { index: 4, name: "Love", summary: "Days 31–40 · Quotes about connection and care." },
+          { index: 5, name: "Change", summary: "Days 41–50 · Quotes about impermanence." },
+          { index: 6, name: "Joy", summary: "Days 51–60 · Quotes about delight and play." },
+          { index: 7, name: "Suffering", summary: "Days 61–70 · Quotes about pain and meaning." },
+          { index: 8, name: "Wisdom", summary: "Days 71–80 · Quotes about learning and humility." },
+          { index: 9, name: "Legacy", summary: "Days 81–90 · Quotes about what remains." }
+        ]
+      },
+      {
+        id: "ai-masterclass",
+        name: "AI Masterclass: Positioning Yourself in the AI Era",
+        kicker: "Career direction · Strategy",
+        subtitle:
+          "Strategic, reassuring tone. This track is about your place in the AI wave: skills to build, bets to avoid, and how to avoid overwhelm while staying relevant.",
+        toneLabel: "Career-focused, calm, realistic",
+        toneNote:
+          "If the AI shift feels overwhelming and you want a clear direction, start here.",
+        style: "ai-career",
+        modules: [
+          { index: 1, name: "Orientation & Overwhelm", summary: "Days 1–10 · What is actually changing — and what isn’t." },
+          { index: 2, name: "You: Skills & Assets", summary: "Days 11–20 · Inventory of your strengths, experience, and interests." },
+          { index: 3, name: "AI Landscape", summary: "Days 21–30 · Where value is being created (and hyped)." },
+          { index: 4, name: "Skill Map", summary: "Days 31–40 · Decide what to learn: depth vs. breadth." },
+          { index: 5, name: "Positioning", summary: "Days 41–50 · Narrative: how you talk about your place in AI." },
+          { index: 6, name: "Experiments", summary: "Days 51–60 · Small bets: projects, collaborations, content." },
+          { index: 7, name: "Leverage at Work", summary: "Days 61–70 · Bringing AI into your current role responsibly." },
+          { index: 8, name: "Risk & Ethics", summary: "Days 71–80 · Guardrails, values, and long-term thinking." },
+          { index: 9, name: "Personal AI Playbook", summary: "Days 81–90 · Your 12-month plan in writing." }
+        ]
+      }
+    ];
+
+    function generateDayMeta(track, dayNumber) {
+      const moduleIndex = Math.min(
+        track.modules.length,
+        Math.ceil(dayNumber / (TOTAL_DAYS_PER_TRACK / track.modules.length))
+      );
+      const module = track.modules[moduleIndex - 1];
+
+      const positionInModule = ((dayNumber - 1) % (TOTAL_DAYS_PER_TRACK / track.modules.length)) + 1;
+      let dayType;
+      if (positionInModule <= 3) dayType = "Learn";
+      else if (positionInModule <= 6) dayType = "Reflect";
+      else if (positionInModule <= 9) dayType = "Practice";
+      else dayType = "Integrate";
+
+      let learn, reflect, practice;
+
+      switch (track.id) {
+        case "storytelling": {
+          const legDescriptions = {
+            1: "Bangalore: the itch to leave and first steps out of your comfort zone.",
+            2: "Through the plains: long stretches of road, small towns, and supporting characters.",
+            3: "Kashmir: cold air, mountains, and seeing how small and alive you feel.",
+            4: "Crossing India: trains, buses, delays, and the messy middle of every story.",
+            5: "Kanyakumari: watching three seas meet, endings and turning points.",
+            6: "The long way home: re-tracing the map with new eyes.",
+            7: "Back in Bangalore: familiar places that feel slightly strange now.",
+            8: "Telling the journey: picking which parts you show to whom.",
+            9: "Mapping your real life: using the trip as template for your own story."
+          };
+          learn =
+            "We’re in " +
+            module.name +
+            ". Picture the traveller on this leg: " +
+            (legDescriptions[moduleIndex] || "on the road") +
+            " Today’s focus: " +
+            dayType.toLowerCase() +
+            " the connection between what happens on the road and how we tell it later.";
+          reflect = [
+            "Where in your own life have you felt like this part of the journey?",
+            "If this leg were a scene in a movie of your life, what would we see and hear?",
+            "What belief about yourself is being challenged or confirmed here?"
+          ];
+          practice = [
+            "Write a short scene (10–15 lines) from today’s leg of the trip, then rewrite it as if it were your own life.",
+            "Share a 2-minute version of that scene with a friend or just voice-record it."
+          ];
+          break;
+        }
+        case "ai-masterclass": {
+          learn =
+            "We’re in '" +
+            module.name +
+            "'. Today is a " +
+            dayType.toLowerCase() +
+            " day: instead of chasing every headline, you’ll zoom out and make sense of where you fit in the AI shift.";
+          reflect = [
+            "What about AI feels most overwhelming right now (speed, jargon, job security, something else)?",
+            "What concrete strengths do you already have that could matter in an AI-heavy world?",
+            "If you had to ignore 90% of AI noise, which 10% would you keep following — and why?"
+          ];
+          practice = [
+            "Write three sentences: 'In this AI era, I want to be the person who…'",
+            "Pick one tiny experiment (course, project, reading, conversation) you’ll do this week to test that direction."
+          ];
+          break;
+        }
+        case "boundaries": {
+          learn =
+            "We’re in '" +
+            module.name +
+            "'. On a " +
+            dayType.toLowerCase() +
+            " day, you gently notice where your energy goes and how it feels to protect it.";
+          reflect = [
+            "Where did you feel a small spike of resentment, guilt, or tightness in your body this week?",
+            "What are you afraid might happen if you protected your limit there?",
+            "What value of yours (rest, honesty, creativity, family, health) is asking for protection?"
+          ];
+          practice = [
+            "Name one micro-boundary you can practise today (e.g., pausing before you say yes).",
+            "Write one sentence you could use if you needed to express that boundary out loud."
+          ];
+          break;
+        }
+        default: {
+          learn =
+            "We’re in '" +
+            module.name +
+            "'. This is a " +
+            dayType.toLowerCase() +
+            " day: focus on a single idea instead of trying to do everything at once.";
+          reflect = [
+            "What does this module theme mean in your own words?",
+            "Where do you currently see this theme show up in your life or work?",
+            "What would '1% better' on this theme look like today?"
+          ];
+          practice = [
+            "Choose one situation from today where you can deliberately apply this module’s theme.",
+            "Write down what you’ll do differently and how you’ll know you did it."
+          ];
+        }
+      }
+
+      return {
+        module,
+        dayType,
+        learn,
+        reflect,
+        practice
+      };
+    }
+
+    function storageKey(trackId, dayNumber) {
+      return `mastery_${trackId}_day_${dayNumber}`;
+    }
+
+    function getTrackCompletion(trackId) {
+      let count = 0;
+      for (let d = 1; d <= TOTAL_DAYS_PER_TRACK; d++) {
+        if (localStorage.getItem(storageKey(trackId, d)) === "1") count++;
+      }
+      return count;
+    }
+
+    function getOverallCompletion() {
+      let total = 0;
+      tracks.forEach((track) => {
+        total += getTrackCompletion(track.id);
+      });
+      return total;
+    }
+
+    const trackListEl = document.getElementById("trackList");
+    const overallProgressBar = document.getElementById("overallProgressBar");
+    const overallProgressLabel = document.getElementById("overallProgressLabel");
+
+    const trackKickerEl = document.getElementById("trackKicker");
+    const trackTitleEl = document.getElementById("trackTitle");
+    const trackSubtitleEl = document.getElementById("trackSubtitle");
+    const toneLabelEl = document.getElementById("toneLabel");
+    const toneNoteEl = document.getElementById("toneNote");
+
+    const trackProgressLabelEl = document.getElementById("trackProgressLabel");
+    const trackProgressValueEl = document.getElementById("trackProgressValue");
+    const trackProgressBarEl = document.getElementById("trackProgressBar");
+    const trackProgressDaysEl = document.getElementById("trackProgressDays");
+    const trackProgressHintEl = document.getElementById("trackProgressHint");
+
+    const summaryBodyEl = document.getElementById("summaryBody");
+    const moduleGridEl = document.getElementById("moduleGrid");
+
+    const daySelectorEl = document.getElementById("daySelector");
+    const completeToggleEl = document.getElementById("completeToggle");
+    const completeLabelEl = document.getElementById("completeLabel");
+
+    const dayTitleEl = document.getElementById("dayTitle");
+    const daySubtitleEl = document.getElementById("daySubtitle");
+    const dayStatusEl = document.getElementById("dayStatus");
+    const dayPhaseLabelEl = document.getElementById("dayPhaseLabel");
+    const dayContentEl = document.getElementById("dayContent");
+    const dayFooterNoteEl = document.getElementById("dayFooterNote");
+    const viewModeLabelEl = document.getElementById("viewModeLabel");
+
+    let activeTrackId = null;
+    let activeDayNumber = null;
+
+    function updateTrackButtons() {
+      document.querySelectorAll(".track-button").forEach((btn) => {
+        const id = btn.dataset.trackId;
+        btn.classList.toggle("active", id === activeTrackId);
+        const track = tracks.find((t) => t.id === id);
+        if (!track) return;
+        const completion = getTrackCompletion(track.id);
+        const pill = btn.querySelector(".track-progress-pill");
+        if (pill) pill.textContent = `${completion}/${TOTAL_DAYS_PER_TRACK}`;
+      });
+    }
+
+    function updateOverallProgress() {
+      const totalCompleted = getOverallCompletion();
+      const totalPossible = TOTAL_DAYS_PER_TRACK * tracks.length;
+      const percent = totalPossible === 0 ? 0 : Math.round((totalCompleted / totalPossible) * 100);
+      overallProgressBar.style.width = `${percent}%`;
+      overallProgressLabel.textContent = `${totalCompleted} of ${totalPossible} days`;
+    }
+
+    function selectTrack(trackId) {
+      const track = tracks.find((t) => t.id === trackId);
+      if (!track) return;
+      activeTrackId = trackId;
+
+      trackKickerEl.textContent = track.kicker;
+      trackTitleEl.innerHTML = `${track.name.split(" (")[0]} – <span class="highlight">90-day track</span>`;
+      trackSubtitleEl.textContent = track.subtitle;
+      toneLabelEl.textContent = track.toneLabel;
+      toneNoteEl.textContent = track.toneNote;
+
+      trackProgressLabelEl.textContent = `Track progress – ${track.name}`;
+      const completed = getTrackCompletion(track.id);
+      const percent = Math.round((completed / TOTAL_DAYS_PER_TRACK) * 100);
+      trackProgressValueEl.textContent = `${percent}%`;
+      trackProgressBarEl.style.width = `${percent}%`;
+      trackProgressDaysEl.textContent = `${completed} of ${TOTAL_DAYS_PER_TRACK} days completed`;
+      trackProgressHintEl.textContent =
+        completed === 0
+          ? "Start with Day 1 and gently build momentum."
+          : "You can jump around, but depth often comes from moving in order.";
+
+      summaryBodyEl.textContent = track.subtitle;
+      moduleGridEl.innerHTML = "";
+      track.modules.forEach((m) => {
+        const div = document.createElement("div");
+        div.className = "module-chip";
+        div.innerHTML = `<strong>Module ${m.index}: ${m.name}</strong><span>${m.summary}</span>`;
+        moduleGridEl.appendChild(div);
+      });
+
+      daySelectorEl.innerHTML = "";
+      for (let d = 1; d <= TOTAL_DAYS_PER_TRACK; d++) {
+        const opt = document.createElement("option");
+        opt.value = d;
+        opt.textContent = `Day ${d} of ${TOTAL_DAYS_PER_TRACK}`;
+        daySelectorEl.appendChild(opt);
+      }
+      daySelectorEl.disabled = false;
+      completeToggleEl.disabled = false;
+
+      activeDayNumber = 1;
+      daySelectorEl.value = "1";
+      renderDay();
+      updateTrackButtons();
+      updateOverallProgress();
+      localStorage.setItem("mastery_active_track", activeTrackId);
+      localStorage.setItem("mastery_active_day", String(activeDayNumber));
+    }
+
+    function renderDay() {
+      if (!activeTrackId || !activeDayNumber) return;
+      const track = tracks.find((t) => t.id === activeTrackId);
+      const dayNum = activeDayNumber;
+      const { module, dayType, learn, reflect, practice } = generateDayMeta(track, dayNum);
+
+      dayTitleEl.textContent = `Day ${dayNum} – ${module.name}`;
+      daySubtitleEl.textContent = module.summary;
+      dayPhaseLabelEl.textContent = `Module ${module.index} of 9 · ${dayType} day`;
+
+      const done = localStorage.getItem(storageKey(activeTrackId, activeDayNumber)) === "1";
+      dayStatusEl.textContent = done ? "Completed (you can still revisit)" : "In progress";
+      completeToggleEl.classList.toggle("completed", done);
+      completeLabelEl.textContent = done ? "Completed" : "Mark complete";
+
+      const bulletsReflect = reflect
+        .map((r) => `<li>${r}</li>`)
+        .join("");
+      const bulletsPractice = practice
+        .map((p) => `<li>${p}</li>`)
+        .join("");
+
+      dayContentEl.innerHTML = `
+        <div class="day-section">
+          <h4>Learn</h4>
+          <p>${learn}</p>
+        </div>
+        <div class="day-section">
+          <h4>Reflect</h4>
+          <ul class="day-bullets">
+            ${bulletsReflect}
+          </ul>
+        </div>
+        <div class="day-section">
+          <h4>Practice</h4>
+          <ul class="day-bullets">
+            ${bulletsPractice}
+          </ul>
+        </div>
+      `;
+
+      switch (track.style) {
+        case "gentle":
+          dayFooterNoteEl.textContent =
+            "If today feels heavy, do less. Even one honest sentence in your journal counts as progress.";
+          break;
+        case "narrative":
+          dayFooterNoteEl.textContent =
+            "Notice how your own life echoes the journey. Stories teach twice: once on the road, once when you tell them.";
+          break;
+        case "technical":
+          dayFooterNoteEl.textContent =
+            "Focus on one concrete situation at work today where you can apply this lens — no need to 'fix everything' at once.";
+          break;
+        case "ai-tech":
+          dayFooterNoteEl.textContent =
+            "Treat this as consistent, low-pressure exposure. AI is a marathon of learning, not a single sprint.";
+          break;
+        case "ai-career":
+          dayFooterNoteEl.textContent =
+            "You don’t have to outrun AI. You only have to become a little clearer, week by week, on how you create value with it.";
+          break;
+        case "quotes":
+          dayFooterNoteEl.textContent =
+            "Let the day’s quote sit with you. One honest paragraph in response is enough.";
+          break;
+        default:
+          dayFooterNoteEl.textContent =
+            "Stay with today’s prompts. Depth comes from re-reading and re-doing, not from rushing ahead.";
+      }
+
+      viewModeLabelEl.textContent = "Single-day view";
+    }
+
+    daySelectorEl.addEventListener("change", () => {
+      if (!activeTrackId) return;
+      const val = parseInt(daySelectorEl.value, 10);
+      if (!val || val < 1 || val > TOTAL_DAYS_PER_TRACK) return;
+      activeDayNumber = val;
+      renderDay();
+      localStorage.setItem("mastery_active_day", String(activeDayNumber));
+    });
+
+    completeToggleEl.addEventListener("click", () => {
+      if (!activeTrackId || !activeDayNumber) return;
+      const key = storageKey(activeTrackId, activeDayNumber);
+      const done = localStorage.getItem(key) === "1";
+      if (done) {
+        localStorage.removeItem(key);
+      } else {
+        localStorage.setItem(key, "1");
+      }
+      renderDay();
+
+      const track = tracks.find((t) => t.id === activeTrackId);
+      const completed = getTrackCompletion(track.id);
+      const percent = Math.round((completed / TOTAL_DAYS_PER_TRACK) * 100);
+      trackProgressValueEl.textContent = `${percent}%`;
+      trackProgressBarEl.style.width = `${percent}%`;
+      trackProgressDaysEl.textContent = `${completed} of ${TOTAL_DAYS_PER_TRACK} days completed`;
+
+      updateTrackButtons();
+      updateOverallProgress();
+    });
+
+    (function init() {
+      // Attach click listeners to existing buttons
+      document.querySelectorAll(".track-button").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          selectTrack(btn.dataset.trackId);
+        });
+      });
+
+      updateTrackButtons();
+      updateOverallProgress();
+
+      const savedTrack = localStorage.getItem("mastery_active_track");
+      const savedDay = parseInt(localStorage.getItem("mastery_active_day") || "1", 10);
+      if (savedTrack && tracks.some((t) => t.id === savedTrack)) {
+        selectTrack(savedTrack);
+        if (savedDay && savedDay >= 1 && savedDay <= TOTAL_DAYS_PER_TRACK) {
+          activeDayNumber = savedDay;
+          daySelectorEl.value = String(savedDay);
+          renderDay();
+        }
+      }
+    })();
+
+    if (window.GleanBridge && typeof window.GleanBridge.postMessage === "function") {
+      window.GleanBridge.postMessage({
+        actionId: "export-pdf",
+        type: "glean-add-menu",
+        metadata: { label: "Export as PDF", icon: "export" }
+      });
+      window.GleanBridge.onMessage("action", function (data) {
+        if (data.actionId === "export-pdf") {
+          window.print();
+        }
+      });
+    }
+  </script>
+</body>
+</html>
