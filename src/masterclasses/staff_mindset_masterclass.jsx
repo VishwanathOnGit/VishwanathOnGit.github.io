@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 
 const PHASES = [
-  { id: 1, title: "MULTIPLY", subtitle: "From doer to force multiplier", days: "Day 1-21", icon: "\u00D7", description: "The #1 mindset shift: stop measuring YOUR output. Start measuring the output you ENABLE in others. Will Larson (Stripe/Uber): 'Staff is not senior but more. It's a different job.'", mnemonic: "L.E.V.E.R. - Lead through others, Enable teams, Vision over tasks, Elevate peers, Results at scale", gradient: { dark: "linear-gradient(160deg, #0a1628 0%, #0f2440 50%, #081420 100%)", light: "linear-gradient(160deg, #eef4fb 0%, #e2eef8 50%, #f0f6fc 100%)" }, accent: { dark: "#38bdf8", light: "#0369a1" }, glow: "rgba(56, 189, 248, 0.2)" },
-  { id: 2, title: "ARCHITECT", subtitle: "Systems thinking at org scale", days: "Day 22-42", icon: "\u25E3", description: "Think beyond code. Design systems, processes, and architectures that outlive you. Evan King (Meta Staff in 3 yrs): 'Find simple solutions to complex problems.'", mnemonic: "S.C.A.L.E. - Systems over code, Cross-team impact, Abstractions, Long-term bets, Evolutionary design", gradient: { dark: "linear-gradient(160deg, #0d1a12 0%, #142e1e 50%, #0a1810 100%)", light: "linear-gradient(160deg, #eefbf2 0%, #dff5e8 50%, #f0fcf4 100%)" }, accent: { dark: "#4ade80", light: "#15803d" }, glow: "rgba(74, 222, 128, 0.2)" },
-  { id: 3, title: "INFLUENCE", subtitle: "Lead without authority", days: "Day 43-63", icon: "\u2B50", description: "Staff engineers lead through influence, not title. Irina Stanescu (Google/Uber): 'It's not about you anymore. It's about the team.'", mnemonic: "T.R.U.S.T. - Technical credibility, Relationships, Understanding context, Sponsoring others, Transparent communication", gradient: { dark: "linear-gradient(160deg, #1a1008 0%, #2e1c0e 50%, #1a1408 100%)", light: "linear-gradient(160deg, #fdf6ed 0%, #faeedd 50%, #fef8f0 100%)" }, accent: { dark: "#fbbf24", light: "#b45309" }, glow: "rgba(251, 191, 36, 0.2)" },
-  { id: 4, title: "STRATEGIZE", subtitle: "Connect tech to business", days: "Day 64-77", icon: "\u2693", description: "The gap between senior and staff: connecting technical decisions to business outcomes. Frame everything in impact, not effort.", mnemonic: "I.M.P.A.C.T. - Identify business value, Map technical decisions, Propose trade-offs, Align stakeholders, Communicate outcomes, Track results", gradient: { dark: "linear-gradient(160deg, #180a1c 0%, #2a1236 50%, #1a0c20 100%)", light: "linear-gradient(160deg, #f9eefe 0%, #f2e0fa 50%, #fbf2ff 100%)" }, accent: { dark: "#c084fc", light: "#7e22ce" }, glow: "rgba(192, 132, 252, 0.2)" },
-  { id: 5, title: "LEGACY", subtitle: "Ship engineers, not just products", days: "Day 78-90", icon: "\u269B", description: "Google's staff saying: 'Senior engineers ship products. Staff engineers ship engineers.' Build the culture, grow the people, define the standards.", mnemonic: "G.R.O.W. - Give sponsorship, Raise the bar, Own the culture, Write the playbook", gradient: { dark: "linear-gradient(160deg, #1a0808 0%, #2e1010 50%, #1c0a0a 100%)", light: "linear-gradient(160deg, #fdf0f0 0%, #fae0e0 50%, #fef2f2 100%)" }, accent: { dark: "#f87171", light: "#dc2626" }, glow: "rgba(248, 113, 113, 0.2)" },
+  { id: 1, title: "MULTIPLY", subtitle: "From doer to force multiplier", days: "Day 1-21", icon: "×", description: "The #1 mindset shift: stop measuring YOUR output. Start measuring the output you ENABLE in others. Will Larson (Stripe/Uber): 'Staff is not senior but more. It's a different job.'", mnemonic: "L.E.V.E.R. - Lead through others, Enable teams, Vision over tasks, Elevate peers, Results at scale", gradient: { dark: "linear-gradient(160deg, #0a1628 0%, #0f2440 50%, #081420 100%)", light: "linear-gradient(160deg, #eef4fb 0%, #e2eef8 50%, #f0f6fc 100%)" }, accent: { dark: "#38bdf8", light: "#0369a1" }, glow: "rgba(56, 189, 248, 0.2)" },
+  { id: 2, title: "ARCHITECT", subtitle: "Systems thinking at org scale", days: "Day 22-42", icon: "◣", description: "Think beyond code. Design systems, processes, and architectures that outlive you. Evan King (Meta Staff in 3 yrs): 'Find simple solutions to complex problems.'", mnemonic: "S.C.A.L.E. - Systems over code, Cross-team impact, Abstractions, Long-term bets, Evolutionary design", gradient: { dark: "linear-gradient(160deg, #0d1a12 0%, #142e1e 50%, #0a1810 100%)", light: "linear-gradient(160deg, #eefbf2 0%, #dff5e8 50%, #f0fcf4 100%)" }, accent: { dark: "#4ade80", light: "#15803d" }, glow: "rgba(74, 222, 128, 0.2)" },
+  { id: 3, title: "INFLUENCE", subtitle: "Lead without authority", days: "Day 43-63", icon: "⭐", description: "Staff engineers lead through influence, not title. Irina Stanescu (Google/Uber): 'It's not about you anymore. It's about the team.'", mnemonic: "T.R.U.S.T. - Technical credibility, Relationships, Understanding context, Sponsoring others, Transparent communication", gradient: { dark: "linear-gradient(160deg, #1a1008 0%, #2e1c0e 50%, #1a1408 100%)", light: "linear-gradient(160deg, #fdf6ed 0%, #faeedd 50%, #fef8f0 100%)" }, accent: { dark: "#fbbf24", light: "#b45309" }, glow: "rgba(251, 191, 36, 0.2)" },
+  { id: 4, title: "STRATEGIZE", subtitle: "Connect tech to business", days: "Day 64-77", icon: "⚓", description: "The gap between senior and staff: connecting technical decisions to business outcomes. Frame everything in impact, not effort.", mnemonic: "I.M.P.A.C.T. - Identify business value, Map technical decisions, Propose trade-offs, Align stakeholders, Communicate outcomes, Track results", gradient: { dark: "linear-gradient(160deg, #180a1c 0%, #2a1236 50%, #1a0c20 100%)", light: "linear-gradient(160deg, #f9eefe 0%, #f2e0fa 50%, #fbf2ff 100%)" }, accent: { dark: "#c084fc", light: "#7e22ce" }, glow: "rgba(192, 132, 252, 0.2)" },
+  { id: 5, title: "LEGACY", subtitle: "Ship engineers, not just products", days: "Day 78-90", icon: "⚛", description: "Google's staff saying: 'Senior engineers ship products. Staff engineers ship engineers.' Build the culture, grow the people, define the standards.", mnemonic: "G.R.O.W. - Give sponsorship, Raise the bar, Own the culture, Write the playbook", gradient: { dark: "linear-gradient(160deg, #1a0808 0%, #2e1010 50%, #1c0a0a 100%)", light: "linear-gradient(160deg, #fdf0f0 0%, #fae0e0 50%, #fef2f2 100%)" }, accent: { dark: "#f87171", light: "#dc2626" }, glow: "rgba(248, 113, 113, 0.2)" },
 ];
 
 const ALL_LESSONS = [
@@ -111,7 +111,7 @@ const ALL_LESSONS = [
 ];
 
 const typeLabel = (t) => t === "bite" ? "5-min Bite" : t === "deep" ? "Deep Dive" : "Practice Day";
-const typeIcon = (t) => t === "bite" ? "\u26A1" : t === "deep" ? "\uD83C\uDF0A" : "\uD83C\uDFCB\uFE0F";
+const typeIcon = (t) => t === "bite" ? "⚡" : t === "deep" ? "🌊" : "🏋️";
 
 export default function App() {
   const [dark, setDark] = useState(true);
@@ -151,7 +151,7 @@ export default function App() {
 
   const Tog = () => (
     <button onClick={() => setDark(!dark)} style={{ position: "fixed", top: 14, right: 14, zIndex: 999, background: t.togBg, backdropFilter: "blur(14px)", border: `1px solid ${t.bdr}`, borderRadius: 40, padding: "7px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 7, color: t.sub, fontSize: 12.5, fontFamily: "'JetBrains Mono', monospace", transition: "all 0.35s", letterSpacing: 0.5 }}>
-      <span style={{ fontSize: 15 }}>{dark ? "\u2600\uFE0F" : "\uD83C\uDF19"}</span>{dark ? "Light" : "Dark"}
+      <span style={{ fontSize: 15 }}>{dark ? "☀️" : "🌙"}</span>{dark ? "Light" : "Dark"}
     </button>
   );
 
@@ -209,7 +209,7 @@ export default function App() {
                 <div style={{ marginTop: 14, height: 2.5, background: t.ring, borderRadius: 3, overflow: "hidden" }}>
                   <div style={{ height: "100%", width: `${(pc/pl.length)*100}%`, background: `linear-gradient(90deg, ${ac}, ${ac}55)`, borderRadius: 3, transition: "width 0.5s ease" }} />
                 </div>
-                <div style={{ marginTop: 10, fontSize: 10, color: t.mut, padding: "6px 11px", background: t.tag, borderRadius: 8, fontFamily: "'JetBrains Mono', monospace", lineHeight: 1.5 }}>\uD83E\uDDE0 {p.mnemonic}</div>
+                <div style={{ marginTop: 10, fontSize: 10, color: t.mut, padding: "6px 11px", background: t.tag, borderRadius: 8, fontFamily: "'JetBrains Mono', monospace", lineHeight: 1.5 }}>🧠 {p.mnemonic}</div>
               </div>
             );
           })}
@@ -230,7 +230,7 @@ export default function App() {
           <div style={{ position: "absolute", inset: 0, background: phase.gradient[m], opacity: dark ? 0.5 : 0.3, transition: "opacity 0.4s" }} />
           {dark && <div style={{ position: "absolute", inset: 0, background: "repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(56,189,248,0.015) 40px, rgba(56,189,248,0.015) 41px), repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(56,189,248,0.015) 40px, rgba(56,189,248,0.015) 41px)", pointerEvents: "none" }} />}
           <div style={{ position: "relative", zIndex: 1, padding: "20px 20px 6px" }}>
-            <button onClick={() => { setVw("home"); setSelPhase(null); setSelDay(null); }} style={{ background: t.togBg, border: `1px solid ${t.bdr}`, color: t.sub, padding: "7px 16px", borderRadius: 10, cursor: "pointer", fontSize: 12, fontFamily: "'JetBrains Mono', monospace" }}>{"\u2190"} Back</button>
+            <button onClick={() => { setVw("home"); setSelPhase(null); setSelDay(null); }} style={{ background: t.togBg, border: `1px solid ${t.bdr}`, color: t.sub, padding: "7px 16px", borderRadius: 10, cursor: "pointer", fontSize: 12, fontFamily: "'JetBrains Mono', monospace" }}>{"←"} Back</button>
           </div>
           <div style={{ position: "relative", zIndex: 1, padding: "8px 24px 24px", textAlign: "center" }}>
             <span style={{ fontSize: 38, fontWeight: 900, color: ac }}>{phase.icon}</span>
@@ -248,22 +248,22 @@ export default function App() {
                 <div onClick={() => setSelDay(op ? null : l.day)} style={{ background: op ? t.surfHov : t.card, border: `1px solid ${op ? `${ac}35` : t.bdr}`, borderRadius: op ? "13px 13px 0 0" : 13, padding: "13px 16px", cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center", transition: "all 0.25s", backdropFilter: "blur(8px)" }}>
                   <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
                     <div onClick={e => { e.stopPropagation(); toggle(l.day); }} style={{ width: 24, height: 24, borderRadius: "50%", border: done[l.day] ? `2.5px solid ${ac}` : `2px solid ${t.bdr}`, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", background: done[l.day] ? `${ac}15` : "transparent", transition: "all 0.25s", flexShrink: 0 }}>
-                      {done[l.day] && <span style={{ color: ac, fontSize: 11, fontWeight: 700 }}>{"\u2713"}</span>}
+                      {done[l.day] && <span style={{ color: ac, fontSize: 11, fontWeight: 700 }}>{"✓"}</span>}
                     </div>
                     <div>
                       <div style={{ fontSize: 9.5, color: t.mut, fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1.2 }}>Day {l.day} | {typeIcon(l.type)} {typeLabel(l.type)}</div>
                       <div style={{ fontSize: 14, fontWeight: 600, color: done[l.day] ? t.mut : t.txt, textDecoration: done[l.day] ? "line-through" : "none", marginTop: 2 }}>{l.title}</div>
                     </div>
                   </div>
-                  <span style={{ color: t.mut, fontSize: 13, transform: op ? "rotate(180deg)" : "rotate(0)", transition: "transform 0.25s", flexShrink: 0 }}>{"\u25BE"}</span>
+                  <span style={{ color: t.mut, fontSize: 13, transform: op ? "rotate(180deg)" : "rotate(0)", transition: "transform 0.25s", flexShrink: 0 }}>{"▾"}</span>
                 </div>
                 {op && (
                   <div style={{ background: t.surfHov, border: `1px solid ${ac}35`, borderTop: "none", borderRadius: "0 0 13px 13px", padding: 20, animation: "ex 0.35s ease", overflow: "hidden", backdropFilter: "blur(8px)" }}>
                     <p style={{ color: t.txt, lineHeight: 1.8, margin: "0 0 18px", fontSize: 14, fontWeight: 300 }}>{l.content}</p>
                     {[
-                      { label: "\uD83D\uDCBC Work Challenge (BHN)", text: l.workChallenge, c: dark ? ["rgba(56,189,248,0.05)","rgba(56,189,248,0.12)","#38bdf8"] : ["rgba(3,105,161,0.04)","rgba(3,105,161,0.09)","#0369a1"] },
-                      { label: "\uD83C\uDF31 Life Challenge", text: l.lifeChallenge, c: dark ? ["rgba(74,222,128,0.05)","rgba(74,222,128,0.11)","#4ade80"] : ["rgba(21,128,61,0.04)","rgba(21,128,61,0.09)","#15803d"] },
-                      { label: "\uD83E\uDDE0 Memory Trick", text: l.memoryTrick, c: dark ? ["rgba(251,191,36,0.05)","rgba(251,191,36,0.12)","#fbbf24"] : ["rgba(180,83,9,0.04)","rgba(180,83,9,0.1)","#b45309"], highlight: true },
+                      { label: "💼 Work Challenge (BHN)", text: l.workChallenge, c: dark ? ["rgba(56,189,248,0.05)","rgba(56,189,248,0.12)","#38bdf8"] : ["rgba(3,105,161,0.04)","rgba(3,105,161,0.09)","#0369a1"] },
+                      { label: "🌱 Life Challenge", text: l.lifeChallenge, c: dark ? ["rgba(74,222,128,0.05)","rgba(74,222,128,0.11)","#4ade80"] : ["rgba(21,128,61,0.04)","rgba(21,128,61,0.09)","#15803d"] },
+                      { label: "🧠 Memory Trick", text: l.memoryTrick, c: dark ? ["rgba(251,191,36,0.05)","rgba(251,191,36,0.12)","#fbbf24"] : ["rgba(180,83,9,0.04)","rgba(180,83,9,0.1)","#b45309"], highlight: true },
                     ].map((s, si) => (
                       <div key={si} style={{ background: s.c[0], border: `1px solid ${s.c[1]}`, borderRadius: 11, padding: "13px 16px", marginBottom: si < 2 ? 10 : 0 }}>
                         <div style={{ fontSize: 9.5, color: s.c[2], letterSpacing: 2.5, textTransform: "uppercase", fontFamily: "'JetBrains Mono', monospace", marginBottom: 6 }}>{s.label}</div>

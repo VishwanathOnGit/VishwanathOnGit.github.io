@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 
 const PHASES = [
-  { id: 1, title: "CRAFT", subtitle: "Code that speaks for itself", days: "Day 1-21", icon: "\u2692\uFE0F", description: "Master the fundamentals so deeply that excellence becomes automatic. Clean code, solid testing, efficient debugging, and technical depth that earns respect.", mnemonic: "S.O.L.I.D. - Standards, Ownership, Legibility, Intent-driven, Defensive coding", gradient: { dark: "linear-gradient(160deg, #081418 0%, #0e2830 50%, #061215 100%)", light: "linear-gradient(160deg, #edf8fa 0%, #ddf2f5 50%, #f0fafb 100%)" }, accent: { dark: "#2dd4bf", light: "#0d9488" }, glow: "rgba(45, 212, 191, 0.2)" },
-  { id: 2, title: "OWN", subtitle: "From ticket-taker to outcome-driver", days: "Day 22-42", icon: "\uD83C\uDFAF", description: "Stop completing tasks. Start driving outcomes. Own the WHY behind your work, the quality of your delivery, and the impact of your decisions.", mnemonic: "D.R.I.V.E. - Deliver reliably, Raise quality, Investigate root causes, Verify impact, Extend beyond the ticket", gradient: { dark: "linear-gradient(160deg, #180a10 0%, #301520 50%, #1c0c14 100%)", light: "linear-gradient(160deg, #fdf0f4 0%, #f8e0ea 50%, #fef2f6 100%)" }, accent: { dark: "#fb7185", light: "#e11d48" }, glow: "rgba(251, 113, 133, 0.2)" },
-  { id: 3, title: "DESIGN", subtitle: "Think in systems, not just syntax", days: "Day 43-63", icon: "\uD83D\uDCD0", description: "Architect solutions, not just implement them. Understand trade-offs, scalability patterns, database design, and how your code fits the bigger picture.", mnemonic: "B.U.I.L.D. - Business context, Understand scale, Interface design, Long-term thinking, Data modeling", gradient: { dark: "linear-gradient(160deg, #0d0e1c 0%, #161840 50%, #0a0c1a 100%)", light: "linear-gradient(160deg, #eff0fd 0%, #e2e4fa 50%, #f2f2ff 100%)" }, accent: { dark: "#818cf8", light: "#4f46e5" }, glow: "rgba(129, 140, 248, 0.2)" },
-  { id: 4, title: "SHIP", subtitle: "Reliable delivery is your reputation", days: "Day 64-77", icon: "\uD83D\uDE80", description: "CI/CD mastery, deployment strategies, monitoring, incident response, and the operational excellence that makes you the engineer everyone trusts in production.", mnemonic: "L.A.U.N.C.H. - Logs, Alerts, Uptime, No surprises, Canary deploys, Health checks", gradient: { dark: "linear-gradient(160deg, #0d1808 0%, #1a3010 50%, #0c1a08 100%)", light: "linear-gradient(160deg, #f0f8ed 0%, #e2f0dd 50%, #f2fbf0 100%)" }, accent: { dark: "#a3e635", light: "#65a30d" }, glow: "rgba(163, 230, 53, 0.2)" },
-  { id: 5, title: "LEAD", subtitle: "Earn the right to lead before the title", days: "Day 78-90", icon: "\uD83D\uDD25", description: "Mentoring, code review excellence, team communication, and the soft skills that make you the senior engineer everyone wants to work with. The bridge to Staff.", mnemonic: "G.U.I.D.E. - Grow others, Unblock teams, Improve processes, Document decisions, Enable juniors", gradient: { dark: "linear-gradient(160deg, #181008 0%, #302210 50%, #1c1408 100%)", light: "linear-gradient(160deg, #fdf6ed 0%, #f8eddd 50%, #fef8f0 100%)" }, accent: { dark: "#fbbf24", light: "#d97706" }, glow: "rgba(251, 191, 36, 0.2)" },
+  { id: 1, title: "CRAFT", subtitle: "Code that speaks for itself", days: "Day 1-21", icon: "⚒️", description: "Master the fundamentals so deeply that excellence becomes automatic. Clean code, solid testing, efficient debugging, and technical depth that earns respect.", mnemonic: "S.O.L.I.D. - Standards, Ownership, Legibility, Intent-driven, Defensive coding", gradient: { dark: "linear-gradient(160deg, #081418 0%, #0e2830 50%, #061215 100%)", light: "linear-gradient(160deg, #edf8fa 0%, #ddf2f5 50%, #f0fafb 100%)" }, accent: { dark: "#2dd4bf", light: "#0d9488" }, glow: "rgba(45, 212, 191, 0.2)" },
+  { id: 2, title: "OWN", subtitle: "From ticket-taker to outcome-driver", days: "Day 22-42", icon: "🎯", description: "Stop completing tasks. Start driving outcomes. Own the WHY behind your work, the quality of your delivery, and the impact of your decisions.", mnemonic: "D.R.I.V.E. - Deliver reliably, Raise quality, Investigate root causes, Verify impact, Extend beyond the ticket", gradient: { dark: "linear-gradient(160deg, #180a10 0%, #301520 50%, #1c0c14 100%)", light: "linear-gradient(160deg, #fdf0f4 0%, #f8e0ea 50%, #fef2f6 100%)" }, accent: { dark: "#fb7185", light: "#e11d48" }, glow: "rgba(251, 113, 133, 0.2)" },
+  { id: 3, title: "DESIGN", subtitle: "Think in systems, not just syntax", days: "Day 43-63", icon: "📐", description: "Architect solutions, not just implement them. Understand trade-offs, scalability patterns, database design, and how your code fits the bigger picture.", mnemonic: "B.U.I.L.D. - Business context, Understand scale, Interface design, Long-term thinking, Data modeling", gradient: { dark: "linear-gradient(160deg, #0d0e1c 0%, #161840 50%, #0a0c1a 100%)", light: "linear-gradient(160deg, #eff0fd 0%, #e2e4fa 50%, #f2f2ff 100%)" }, accent: { dark: "#818cf8", light: "#4f46e5" }, glow: "rgba(129, 140, 248, 0.2)" },
+  { id: 4, title: "SHIP", subtitle: "Reliable delivery is your reputation", days: "Day 64-77", icon: "🚀", description: "CI/CD mastery, deployment strategies, monitoring, incident response, and the operational excellence that makes you the engineer everyone trusts in production.", mnemonic: "L.A.U.N.C.H. - Logs, Alerts, Uptime, No surprises, Canary deploys, Health checks", gradient: { dark: "linear-gradient(160deg, #0d1808 0%, #1a3010 50%, #0c1a08 100%)", light: "linear-gradient(160deg, #f0f8ed 0%, #e2f0dd 50%, #f2fbf0 100%)" }, accent: { dark: "#a3e635", light: "#65a30d" }, glow: "rgba(163, 230, 53, 0.2)" },
+  { id: 5, title: "LEAD", subtitle: "Earn the right to lead before the title", days: "Day 78-90", icon: "🔥", description: "Mentoring, code review excellence, team communication, and the soft skills that make you the senior engineer everyone wants to work with. The bridge to Staff.", mnemonic: "G.U.I.D.E. - Grow others, Unblock teams, Improve processes, Document decisions, Enable juniors", gradient: { dark: "linear-gradient(160deg, #181008 0%, #302210 50%, #1c1408 100%)", light: "linear-gradient(160deg, #fdf6ed 0%, #f8eddd 50%, #fef8f0 100%)" }, accent: { dark: "#fbbf24", light: "#d97706" }, glow: "rgba(251, 191, 36, 0.2)" },
 ];
 
 const ALL_LESSONS = [
@@ -111,7 +111,7 @@ const ALL_LESSONS = [
 ];
 
 const typeLabel = (t) => t === "bite" ? "5-min Bite" : t === "deep" ? "Deep Dive" : "Practice Day";
-const typeIcon = (t) => t === "bite" ? "\u26A1" : t === "deep" ? "\uD83C\uDF0A" : "\uD83C\uDFCB\uFE0F";
+const typeIcon = (t) => t === "bite" ? "⚡" : t === "deep" ? "🌊" : "🏋️";
 
 export default function App() {
   const [dark, setDark] = useState(true);
@@ -151,7 +151,7 @@ export default function App() {
 
   const Tog = () => (
     <button onClick={() => setDark(!dark)} style={{ position: "fixed", top: 14, right: 14, zIndex: 999, background: t.togBg, backdropFilter: "blur(14px)", border: `1px solid ${t.bdr}`, borderRadius: 40, padding: "7px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 7, color: t.sub, fontSize: 12.5, fontFamily: "'JetBrains Mono', monospace", transition: "all 0.35s", letterSpacing: 0.5 }}>
-      <span style={{ fontSize: 15 }}>{dark ? "\u2600\uFE0F" : "\uD83C\uDF19"}</span>{dark ? "Light" : "Dark"}
+      <span style={{ fontSize: 15 }}>{dark ? "☀️" : "🌙"}</span>{dark ? "Light" : "Dark"}
     </button>
   );
 
@@ -208,7 +208,7 @@ export default function App() {
                 <div style={{ marginTop: 14, height: 2.5, background: t.ring, borderRadius: 3, overflow: "hidden" }}>
                   <div style={{ height: "100%", width: `${(pc/pl.length)*100}%`, background: `linear-gradient(90deg, ${ac}, ${ac}55)`, borderRadius: 3, transition: "width 0.5s ease" }} />
                 </div>
-                <div style={{ marginTop: 10, fontSize: 10, color: t.mut, padding: "6px 11px", background: t.tag, borderRadius: 8, fontFamily: "'JetBrains Mono', monospace", lineHeight: 1.5 }}>\uD83E\uDDE0 {p.mnemonic}</div>
+                <div style={{ marginTop: 10, fontSize: 10, color: t.mut, padding: "6px 11px", background: t.tag, borderRadius: 8, fontFamily: "'JetBrains Mono', monospace", lineHeight: 1.5 }}>🧠 {p.mnemonic}</div>
               </div>
             );
           })}
@@ -228,7 +228,7 @@ export default function App() {
         <div style={{ position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", inset: 0, background: phase.gradient[m], opacity: dark ? 0.5 : 0.3, transition: "opacity 0.4s" }} />
           <div style={{ position: "relative", zIndex: 1, padding: "20px 20px 6px" }}>
-            <button onClick={() => { setVw("home"); setSelPhase(null); setSelDay(null); }} style={{ background: t.togBg, border: `1px solid ${t.bdr}`, color: t.sub, padding: "7px 16px", borderRadius: 10, cursor: "pointer", fontSize: 12, fontFamily: "'JetBrains Mono', monospace" }}>{"\u2190"} Back</button>
+            <button onClick={() => { setVw("home"); setSelPhase(null); setSelDay(null); }} style={{ background: t.togBg, border: `1px solid ${t.bdr}`, color: t.sub, padding: "7px 16px", borderRadius: 10, cursor: "pointer", fontSize: 12, fontFamily: "'JetBrains Mono', monospace" }}>{"←"} Back</button>
           </div>
           <div style={{ position: "relative", zIndex: 1, padding: "8px 24px 24px", textAlign: "center" }}>
             <span style={{ fontSize: 38 }}>{phase.icon}</span>
@@ -246,22 +246,22 @@ export default function App() {
                 <div onClick={() => setSelDay(op ? null : l.day)} style={{ background: op ? t.surfHov : t.card, border: `1px solid ${op ? `${ac}35` : t.bdr}`, borderRadius: op ? "13px 13px 0 0" : 13, padding: "13px 16px", cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center", transition: "all 0.25s", backdropFilter: "blur(8px)" }}>
                   <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
                     <div onClick={e => { e.stopPropagation(); toggle(l.day); }} style={{ width: 24, height: 24, borderRadius: "50%", border: done[l.day] ? `2.5px solid ${ac}` : `2px solid ${t.bdr}`, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", background: done[l.day] ? `${ac}15` : "transparent", transition: "all 0.25s", flexShrink: 0 }}>
-                      {done[l.day] && <span style={{ color: ac, fontSize: 11, fontWeight: 700 }}>{"\u2713"}</span>}
+                      {done[l.day] && <span style={{ color: ac, fontSize: 11, fontWeight: 700 }}>{"✓"}</span>}
                     </div>
                     <div>
                       <div style={{ fontSize: 9.5, color: t.mut, fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1.2 }}>Day {l.day} | {typeIcon(l.type)} {typeLabel(l.type)}</div>
                       <div style={{ fontSize: 14, fontWeight: 600, color: done[l.day] ? t.mut : t.txt, textDecoration: done[l.day] ? "line-through" : "none", marginTop: 2 }}>{l.title}</div>
                     </div>
                   </div>
-                  <span style={{ color: t.mut, fontSize: 13, transform: op ? "rotate(180deg)" : "rotate(0)", transition: "transform 0.25s", flexShrink: 0 }}>{"\u25BE"}</span>
+                  <span style={{ color: t.mut, fontSize: 13, transform: op ? "rotate(180deg)" : "rotate(0)", transition: "transform 0.25s", flexShrink: 0 }}>{"▾"}</span>
                 </div>
                 {op && (
                   <div style={{ background: t.surfHov, border: `1px solid ${ac}35`, borderTop: "none", borderRadius: "0 0 13px 13px", padding: 20, animation: "ex 0.35s ease", overflow: "hidden", backdropFilter: "blur(8px)" }}>
                     <p style={{ color: t.txt, lineHeight: 1.8, margin: "0 0 18px", fontSize: 14, fontWeight: 300 }}>{l.content}</p>
                     {[
-                      { label: "\uD83D\uDCBC Work Challenge (BHN)", text: l.workChallenge, c: dark ? ["rgba(45,212,191,0.05)","rgba(45,212,191,0.12)","#2dd4bf"] : ["rgba(13,148,136,0.04)","rgba(13,148,136,0.09)","#0d9488"] },
-                      { label: "\uD83C\uDF31 Life Challenge", text: l.lifeChallenge, c: dark ? ["rgba(129,140,248,0.05)","rgba(129,140,248,0.11)","#818cf8"] : ["rgba(79,70,229,0.04)","rgba(79,70,229,0.09)","#4f46e5"] },
-                      { label: "\uD83E\uDDE0 Memory Trick", text: l.memoryTrick, c: dark ? ["rgba(251,191,36,0.05)","rgba(251,191,36,0.12)","#fbbf24"] : ["rgba(217,119,6,0.04)","rgba(217,119,6,0.1)","#d97706"], highlight: true },
+                      { label: "💼 Work Challenge (BHN)", text: l.workChallenge, c: dark ? ["rgba(45,212,191,0.05)","rgba(45,212,191,0.12)","#2dd4bf"] : ["rgba(13,148,136,0.04)","rgba(13,148,136,0.09)","#0d9488"] },
+                      { label: "🌱 Life Challenge", text: l.lifeChallenge, c: dark ? ["rgba(129,140,248,0.05)","rgba(129,140,248,0.11)","#818cf8"] : ["rgba(79,70,229,0.04)","rgba(79,70,229,0.09)","#4f46e5"] },
+                      { label: "🧠 Memory Trick", text: l.memoryTrick, c: dark ? ["rgba(251,191,36,0.05)","rgba(251,191,36,0.12)","#fbbf24"] : ["rgba(217,119,6,0.04)","rgba(217,119,6,0.1)","#d97706"], highlight: true },
                     ].map((s, si) => (
                       <div key={si} style={{ background: s.c[0], border: `1px solid ${s.c[1]}`, borderRadius: 11, padding: "13px 16px", marginBottom: si < 2 ? 10 : 0 }}>
                         <div style={{ fontSize: 9.5, color: s.c[2], letterSpacing: 2.5, textTransform: "uppercase", fontFamily: "'JetBrains Mono', monospace", marginBottom: 6 }}>{s.label}</div>

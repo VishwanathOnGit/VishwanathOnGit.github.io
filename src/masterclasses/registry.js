@@ -121,6 +121,20 @@ const masterclasses = [
     duration: "21 days",
     component: lazy(() => import("./prompt_masterclass.jsx")),
   },
+  {
+    id: "vishwa-motovlogs",
+    path: "/vishwa-motovlogs",
+    title: "Vishwa Motovlogs",
+    subtitle: "Grow Your Channel. Grow Yourself.",
+    icon: "🏍️",
+    accent: "#E8A838",
+    accentDark: "#92400e",
+    gradient: "linear-gradient(135deg, #92400e 0%, #E8A838 100%)",
+    totalLessons: 90,
+    phases: 6,
+    duration: "90 days",
+    component: lazy(() => import("./youtube_masterclass.jsx")),
+  },
 ];
 
 export default masterclasses;

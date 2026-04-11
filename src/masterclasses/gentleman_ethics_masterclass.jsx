@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 
 const PHASES = [
-  { id: 1, title: "PRESENCE", subtitle: "How you show up matters", days: "Day 1-21", icon: "\uD83E\uDDD4", description: "Master first impressions, body language, grooming, and the quiet confidence that makes people take notice.", mnemonic: "G.R.A.C.E. - Grooming, Respect, Awareness, Composure, Eye contact", gradient: { dark: "linear-gradient(135deg, #1a0f2e 0%, #2a1b4e 50%, #0d1f2d 100%)", light: "linear-gradient(135deg, #f3edff 0%, #ece4ff 50%, #f7f2ff 100%)" }, accent: { dark: "#a78bfa", light: "#6d28d9" }, glow: "rgba(167, 139, 250, 0.3)" },
-  { id: 2, title: "CHARACTER", subtitle: "Who you are when no one watches", days: "Day 22-42", icon: "\uD83D\uDCA0", description: "Build the inner qualities that define a true gentleman: integrity, honesty, discipline, and moral courage.", mnemonic: "S.T.E.E.L. - Self-discipline, Truth, Empathy, Ethics, Loyalty", gradient: { dark: "linear-gradient(135deg, #0d2818 0%, #1a4030 50%, #0d1f2d 100%)", light: "linear-gradient(135deg, #edf8f1 0%, #ddf0e5 50%, #ecf9f0 100%)" }, accent: { dark: "#34d399", light: "#059669" }, glow: "rgba(52, 211, 153, 0.3)" },
-  { id: 3, title: "CONDUCT", subtitle: "Actions speak your values", days: "Day 43-63", icon: "\uD83E\uDD1D", description: "Learn the art of social grace, dining etiquette, professional manners, and how to navigate any room.", mnemonic: "C.L.A.S.S. - Courtesy, Listening, Attire, Speech, Service", gradient: { dark: "linear-gradient(135deg, #2d1a0a 0%, #4a2c12 50%, #2d200d 100%)", light: "linear-gradient(135deg, #fef3e2 0%, #fde9cc 50%, #fef5e7 100%)" }, accent: { dark: "#fbbf24", light: "#d97706" }, glow: "rgba(251, 191, 36, 0.3)" },
-  { id: 4, title: "WISDOM", subtitle: "Think before you act, speak, or judge", days: "Day 64-77", icon: "\uD83E\uDDE0", description: "Develop emotional intelligence, conflict resolution, and the ethical frameworks that guide difficult choices.", mnemonic: "M.I.N.D. - Measure words, Inquire first, Never assume, Deliberate", gradient: { dark: "linear-gradient(135deg, #0d1a2e 0%, #12304e 50%, #0a1e30 100%)", light: "linear-gradient(135deg, #e8f0fa 0%, #d8e8f8 50%, #eaf3ff 100%)" }, accent: { dark: "#38bdf8", light: "#0284c7" }, glow: "rgba(56, 189, 248, 0.3)" },
-  { id: 5, title: "LEGACY", subtitle: "Leave every room better than you found it", days: "Day 78-90", icon: "\uD83C\uDF1F", description: "Bring it all together. Mentorship, generosity, leading by example, and building a reputation that outlasts you.", mnemonic: "L.I.F.T. - Lead, Inspire, Follow-through, Teach", gradient: { dark: "linear-gradient(135deg, #2e0d1e 0%, #4e1535 50%, #2d0a20 100%)", light: "linear-gradient(135deg, #fce8f1 0%, #f8d5e5 50%, #fdeaf3 100%)" }, accent: { dark: "#f472b6", light: "#db2777" }, glow: "rgba(244, 114, 182, 0.3)" },
+  { id: 1, title: "PRESENCE", subtitle: "How you show up matters", days: "Day 1-21", icon: "🧔", description: "Master first impressions, body language, grooming, and the quiet confidence that makes people take notice.", mnemonic: "G.R.A.C.E. - Grooming, Respect, Awareness, Composure, Eye contact", gradient: { dark: "linear-gradient(135deg, #1a0f2e 0%, #2a1b4e 50%, #0d1f2d 100%)", light: "linear-gradient(135deg, #f3edff 0%, #ece4ff 50%, #f7f2ff 100%)" }, accent: { dark: "#a78bfa", light: "#6d28d9" }, glow: "rgba(167, 139, 250, 0.3)" },
+  { id: 2, title: "CHARACTER", subtitle: "Who you are when no one watches", days: "Day 22-42", icon: "💠", description: "Build the inner qualities that define a true gentleman: integrity, honesty, discipline, and moral courage.", mnemonic: "S.T.E.E.L. - Self-discipline, Truth, Empathy, Ethics, Loyalty", gradient: { dark: "linear-gradient(135deg, #0d2818 0%, #1a4030 50%, #0d1f2d 100%)", light: "linear-gradient(135deg, #edf8f1 0%, #ddf0e5 50%, #ecf9f0 100%)" }, accent: { dark: "#34d399", light: "#059669" }, glow: "rgba(52, 211, 153, 0.3)" },
+  { id: 3, title: "CONDUCT", subtitle: "Actions speak your values", days: "Day 43-63", icon: "🤝", description: "Learn the art of social grace, dining etiquette, professional manners, and how to navigate any room.", mnemonic: "C.L.A.S.S. - Courtesy, Listening, Attire, Speech, Service", gradient: { dark: "linear-gradient(135deg, #2d1a0a 0%, #4a2c12 50%, #2d200d 100%)", light: "linear-gradient(135deg, #fef3e2 0%, #fde9cc 50%, #fef5e7 100%)" }, accent: { dark: "#fbbf24", light: "#d97706" }, glow: "rgba(251, 191, 36, 0.3)" },
+  { id: 4, title: "WISDOM", subtitle: "Think before you act, speak, or judge", days: "Day 64-77", icon: "🧠", description: "Develop emotional intelligence, conflict resolution, and the ethical frameworks that guide difficult choices.", mnemonic: "M.I.N.D. - Measure words, Inquire first, Never assume, Deliberate", gradient: { dark: "linear-gradient(135deg, #0d1a2e 0%, #12304e 50%, #0a1e30 100%)", light: "linear-gradient(135deg, #e8f0fa 0%, #d8e8f8 50%, #eaf3ff 100%)" }, accent: { dark: "#38bdf8", light: "#0284c7" }, glow: "rgba(56, 189, 248, 0.3)" },
+  { id: 5, title: "LEGACY", subtitle: "Leave every room better than you found it", days: "Day 78-90", icon: "🌟", description: "Bring it all together. Mentorship, generosity, leading by example, and building a reputation that outlasts you.", mnemonic: "L.I.F.T. - Lead, Inspire, Follow-through, Teach", gradient: { dark: "linear-gradient(135deg, #2e0d1e 0%, #4e1535 50%, #2d0a20 100%)", light: "linear-gradient(135deg, #fce8f1 0%, #f8d5e5 50%, #fdeaf3 100%)" }, accent: { dark: "#f472b6", light: "#db2777" }, glow: "rgba(244, 114, 182, 0.3)" },
 ];
 
 const ALL_LESSONS = [
@@ -111,7 +111,7 @@ const ALL_LESSONS = [
 ];
 
 const typeLabel = (t) => t === "bite" ? "5-min Bite" : t === "deep" ? "Deep Dive" : "Practice Day";
-const typeIcon = (t) => t === "bite" ? "\u26A1" : t === "deep" ? "\uD83C\uDF0A" : "\uD83C\uDFCB\uFE0F";
+const typeIcon = (t) => t === "bite" ? "⚡" : t === "deep" ? "🌊" : "🏋️";
 
 export default function App() {
   const [dark, setDark] = useState(true);
@@ -152,7 +152,7 @@ export default function App() {
 
   const Tog = () => (
     <button onClick={() => setDark(!dark)} style={{ position: "fixed", top: 14, right: 14, zIndex: 999, background: dark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.05)", backdropFilter: "blur(14px)", border: `1px solid ${t.bdr}`, borderRadius: 40, padding: "7px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 7, color: t.sub, fontSize: 12.5, fontFamily: "'DM Mono', monospace", transition: "all 0.35s", letterSpacing: 0.5 }}>
-      <span style={{ fontSize: 15 }}>{dark ? "\u2600\uFE0F" : "\uD83C\uDF19"}</span>{dark ? "Light" : "Dark"}
+      <span style={{ fontSize: 15 }}>{dark ? "☀️" : "🌙"}</span>{dark ? "Light" : "Dark"}
     </button>
   );
 
@@ -208,7 +208,7 @@ export default function App() {
                 <div style={{ marginTop: 16, height: 3, background: t.ring, borderRadius: 3, overflow: "hidden" }}>
                   <div style={{ height: "100%", width: `${(pc/pl.length)*100}%`, background: `linear-gradient(90deg, ${ac}, ${ac}77)`, borderRadius: 3, transition: "width 0.5s ease" }} />
                 </div>
-                <div style={{ marginTop: 11, fontSize: 11, color: t.mut, padding: "7px 12px", background: t.tag, borderRadius: 9, fontFamily: "'DM Mono', monospace", lineHeight: 1.5 }}>\uD83E\uDDE0 {p.mnemonic}</div>
+                <div style={{ marginTop: 11, fontSize: 11, color: t.mut, padding: "7px 12px", background: t.tag, borderRadius: 9, fontFamily: "'DM Mono', monospace", lineHeight: 1.5 }}>🧠 {p.mnemonic}</div>
               </div>
             );
           })}
@@ -228,7 +228,7 @@ export default function App() {
         <div style={{ position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", inset: 0, background: phase.gradient[m], opacity: dark ? 0.55 : 0.35, transition: "opacity 0.4s" }} />
           <div style={{ position: "relative", zIndex: 1, padding: "20px 20px 6px" }}>
-            <button onClick={() => { setVw("home"); setSelPhase(null); setSelDay(null); }} style={{ background: t.togBg, border: `1px solid ${t.bdr}`, color: t.sub, padding: "7px 16px", borderRadius: 10, cursor: "pointer", fontSize: 12.5, fontFamily: "'DM Mono', monospace" }}>{"\u2190"} Back</button>
+            <button onClick={() => { setVw("home"); setSelPhase(null); setSelDay(null); }} style={{ background: t.togBg, border: `1px solid ${t.bdr}`, color: t.sub, padding: "7px 16px", borderRadius: 10, cursor: "pointer", fontSize: 12.5, fontFamily: "'DM Mono', monospace" }}>{"←"} Back</button>
           </div>
           <div style={{ position: "relative", zIndex: 1, padding: "10px 24px 30px", textAlign: "center" }}>
             <span style={{ fontSize: 44 }}>{phase.icon}</span>
@@ -246,22 +246,22 @@ export default function App() {
                 <div onClick={() => setSelDay(op ? null : l.day)} style={{ background: op ? t.surfHov : t.card, border: `1px solid ${op ? `${ac}40` : t.bdr}`, borderRadius: op ? "15px 15px 0 0" : 15, padding: "15px 18px", cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center", transition: "all 0.25s", backdropFilter: "blur(8px)" }}>
                   <div style={{ display: "flex", gap: 14, alignItems: "center" }}>
                     <div onClick={e => { e.stopPropagation(); toggle(l.day); }} style={{ width: 27, height: 27, borderRadius: "50%", border: done[l.day] ? `2.5px solid ${ac}` : `2px solid ${t.bdr}`, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", background: done[l.day] ? `${ac}15` : "transparent", transition: "all 0.25s", flexShrink: 0 }}>
-                      {done[l.day] && <span style={{ color: ac, fontSize: 13, fontWeight: 700 }}>{"\u2713"}</span>}
+                      {done[l.day] && <span style={{ color: ac, fontSize: 13, fontWeight: 700 }}>{"✓"}</span>}
                     </div>
                     <div>
                       <div style={{ fontSize: 10.5, color: t.mut, fontFamily: "'DM Mono', monospace", letterSpacing: 1.2 }}>Day {l.day} | {typeIcon(l.type)} {typeLabel(l.type)}</div>
                       <div style={{ fontSize: 15, fontWeight: 500, color: done[l.day] ? t.mut : t.txt, textDecoration: done[l.day] ? "line-through" : "none", marginTop: 3 }}>{l.title}</div>
                     </div>
                   </div>
-                  <span style={{ color: t.mut, fontSize: 15, transform: op ? "rotate(180deg)" : "rotate(0)", transition: "transform 0.25s", flexShrink: 0 }}>{"\u25BE"}</span>
+                  <span style={{ color: t.mut, fontSize: 15, transform: op ? "rotate(180deg)" : "rotate(0)", transition: "transform 0.25s", flexShrink: 0 }}>{"▾"}</span>
                 </div>
                 {op && (
                   <div style={{ background: t.surfHov, border: `1px solid ${ac}40`, borderTop: "none", borderRadius: "0 0 15px 15px", padding: 22, animation: "ex 0.35s ease", overflow: "hidden", backdropFilter: "blur(8px)" }}>
                     <p style={{ color: t.txt, lineHeight: 1.8, margin: "0 0 22px", fontSize: 14.5, fontWeight: 300 }}>{l.content}</p>
                     {[
-                      { label: "\uD83D\uDCBC Work Challenge (BHN)", text: l.workChallenge, c: dark ? ["rgba(167,139,250,0.06)","rgba(167,139,250,0.13)","#a78bfa"] : ["rgba(109,40,217,0.04)","rgba(109,40,217,0.1)","#6d28d9"] },
-                      { label: "\uD83C\uDF31 Life Challenge", text: l.lifeChallenge, c: dark ? ["rgba(52,211,153,0.05)","rgba(52,211,153,0.11)","#34d399"] : ["rgba(5,150,105,0.04)","rgba(5,150,105,0.09)","#059669"] },
-                      { label: "\uD83E\uDDE0 Memory Trick", text: l.memoryTrick, c: dark ? ["rgba(251,191,36,0.06)","rgba(251,191,36,0.14)","#fbbf24"] : ["rgba(217,119,6,0.04)","rgba(217,119,6,0.1)","#d97706"], highlight: true },
+                      { label: "💼 Work Challenge (BHN)", text: l.workChallenge, c: dark ? ["rgba(167,139,250,0.06)","rgba(167,139,250,0.13)","#a78bfa"] : ["rgba(109,40,217,0.04)","rgba(109,40,217,0.1)","#6d28d9"] },
+                      { label: "🌱 Life Challenge", text: l.lifeChallenge, c: dark ? ["rgba(52,211,153,0.05)","rgba(52,211,153,0.11)","#34d399"] : ["rgba(5,150,105,0.04)","rgba(5,150,105,0.09)","#059669"] },
+                      { label: "🧠 Memory Trick", text: l.memoryTrick, c: dark ? ["rgba(251,191,36,0.06)","rgba(251,191,36,0.14)","#fbbf24"] : ["rgba(217,119,6,0.04)","rgba(217,119,6,0.1)","#d97706"], highlight: true },
                     ].map((s, si) => (
                       <div key={si} style={{ background: s.c[0], border: `1px solid ${s.c[1]}`, borderRadius: 13, padding: "15px 18px", marginBottom: si < 2 ? 12 : 0 }}>
                         <div style={{ fontSize: 10.5, color: s.c[2], letterSpacing: 2.5, textTransform: "uppercase", fontFamily: "'DM Mono', monospace", marginBottom: 7 }}>{s.label}</div>

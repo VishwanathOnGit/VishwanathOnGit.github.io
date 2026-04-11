@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 
 const DAYS = [
-  { id: 1, title: "FOUNDATIONS", subtitle: "Why patterns exist and how to think in patterns", icon: "\uD83E\uDDF1", accent: { dark: "#38bdf8", light: "#0369a1" }, glow: "rgba(56,189,248,0.2)", gradient: { dark: "linear-gradient(160deg, #0a1628 0%, #0f2440 50%, #081420 100%)", light: "linear-gradient(160deg, #eef4fb 0%, #e2eef8 50%, #f0f6fc 100%)" } },
-  { id: 2, title: "CREATIONAL", subtitle: "How objects are born", icon: "\uD83C\uDFED", accent: { dark: "#4ade80", light: "#15803d" }, glow: "rgba(74,222,128,0.2)", gradient: { dark: "linear-gradient(160deg, #0a1a10 0%, #123020 50%, #081a0e 100%)", light: "linear-gradient(160deg, #eefaf0 0%, #ddf5e5 50%, #f0fcf2 100%)" } },
-  { id: 3, title: "STRUCTURAL I", subtitle: "How objects connect (The Essentials)", icon: "\uD83C\uDFD7\uFE0F", accent: { dark: "#fbbf24", light: "#b45309" }, glow: "rgba(251,191,36,0.2)", gradient: { dark: "linear-gradient(160deg, #1a1508 0%, #302510 50%, #1c1808 100%)", light: "linear-gradient(160deg, #fef9ed 0%, #faf0d8 50%, #fffaf0 100%)" } },
-  { id: 4, title: "STRUCTURAL II", subtitle: "How objects connect (The Power Patterns)", icon: "\uD83D\uDD27", accent: { dark: "#fb923c", light: "#c2410c" }, glow: "rgba(251,146,60,0.2)", gradient: { dark: "linear-gradient(160deg, #1a100a 0%, #302012 50%, #1c120a 100%)", light: "linear-gradient(160deg, #fef5ed 0%, #faecd8 50%, #fff6f0 100%)" } },
-  { id: 5, title: "BEHAVIORAL I", subtitle: "How objects talk (Communication Patterns)", icon: "\uD83D\uDDE3\uFE0F", accent: { dark: "#c084fc", light: "#7e22ce" }, glow: "rgba(192,132,252,0.2)", gradient: { dark: "linear-gradient(160deg, #150a20 0%, #251540 50%, #180c25 100%)", light: "linear-gradient(160deg, #f8f0ff 0%, #f0e0fc 50%, #faf2ff 100%)" } },
-  { id: 6, title: "BEHAVIORAL II", subtitle: "How objects talk (Advanced Orchestration)", icon: "\uD83E\uDDE0", accent: { dark: "#f472b6", light: "#db2777" }, glow: "rgba(244,114,182,0.2)", gradient: { dark: "linear-gradient(160deg, #200a15 0%, #381530 50%, #220c18 100%)", light: "linear-gradient(160deg, #fff0f5 0%, #fce0ec 50%, #fff2f7 100%)" } },
-  { id: 7, title: "MASTERY", subtitle: "Combining patterns + modern patterns + when NOT to use them", icon: "\uD83C\uDFC6", accent: { dark: "#fde047", light: "#ca8a04" }, glow: "rgba(253,224,71,0.2)", gradient: { dark: "linear-gradient(160deg, #1a1808 0%, #302a10 50%, #1c1a08 100%)", light: "linear-gradient(160deg, #fffced 0%, #faf5d8 50%, #fffdf0 100%)" } },
+  { id: 1, title: "FOUNDATIONS", subtitle: "Why patterns exist and how to think in patterns", icon: "🧱", accent: { dark: "#38bdf8", light: "#0369a1" }, glow: "rgba(56,189,248,0.2)", gradient: { dark: "linear-gradient(160deg, #0a1628 0%, #0f2440 50%, #081420 100%)", light: "linear-gradient(160deg, #eef4fb 0%, #e2eef8 50%, #f0f6fc 100%)" } },
+  { id: 2, title: "CREATIONAL", subtitle: "How objects are born", icon: "🏭", accent: { dark: "#4ade80", light: "#15803d" }, glow: "rgba(74,222,128,0.2)", gradient: { dark: "linear-gradient(160deg, #0a1a10 0%, #123020 50%, #081a0e 100%)", light: "linear-gradient(160deg, #eefaf0 0%, #ddf5e5 50%, #f0fcf2 100%)" } },
+  { id: 3, title: "STRUCTURAL I", subtitle: "How objects connect (The Essentials)", icon: "🏗️", accent: { dark: "#fbbf24", light: "#b45309" }, glow: "rgba(251,191,36,0.2)", gradient: { dark: "linear-gradient(160deg, #1a1508 0%, #302510 50%, #1c1808 100%)", light: "linear-gradient(160deg, #fef9ed 0%, #faf0d8 50%, #fffaf0 100%)" } },
+  { id: 4, title: "STRUCTURAL II", subtitle: "How objects connect (The Power Patterns)", icon: "🔧", accent: { dark: "#fb923c", light: "#c2410c" }, glow: "rgba(251,146,60,0.2)", gradient: { dark: "linear-gradient(160deg, #1a100a 0%, #302012 50%, #1c120a 100%)", light: "linear-gradient(160deg, #fef5ed 0%, #faecd8 50%, #fff6f0 100%)" } },
+  { id: 5, title: "BEHAVIORAL I", subtitle: "How objects talk (Communication Patterns)", icon: "🗣️", accent: { dark: "#c084fc", light: "#7e22ce" }, glow: "rgba(192,132,252,0.2)", gradient: { dark: "linear-gradient(160deg, #150a20 0%, #251540 50%, #180c25 100%)", light: "linear-gradient(160deg, #f8f0ff 0%, #f0e0fc 50%, #faf2ff 100%)" } },
+  { id: 6, title: "BEHAVIORAL II", subtitle: "How objects talk (Advanced Orchestration)", icon: "🧠", accent: { dark: "#f472b6", light: "#db2777" }, glow: "rgba(244,114,182,0.2)", gradient: { dark: "linear-gradient(160deg, #200a15 0%, #381530 50%, #220c18 100%)", light: "linear-gradient(160deg, #fff0f5 0%, #fce0ec 50%, #fff2f7 100%)" } },
+  { id: 7, title: "MASTERY", subtitle: "Combining patterns + modern patterns + when NOT to use them", icon: "🏆", accent: { dark: "#fde047", light: "#ca8a04" }, glow: "rgba(253,224,71,0.2)", gradient: { dark: "linear-gradient(160deg, #1a1808 0%, #302a10 50%, #1c1a08 100%)", light: "linear-gradient(160deg, #fffced 0%, #faf5d8 50%, #fffdf0 100%)" } },
 ];
 
 const ALL_LESSONS = [
@@ -114,7 +114,7 @@ export default function App() {
 
   const Tog = () => (
     <button onClick={() => setDark(!dark)} style={{ position: "fixed", top: 14, right: 14, zIndex: 999, background: t.togBg, backdropFilter: "blur(14px)", border: `1px solid ${t.bdr}`, borderRadius: 40, padding: "7px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 7, color: t.sub, fontSize: 12.5, fontFamily: "'JetBrains Mono', monospace", transition: "all 0.35s" }}>
-      <span style={{ fontSize: 15 }}>{dark ? "\u2600\uFE0F" : "\uD83C\uDF19"}</span>{dark ? "Light" : "Dark"}
+      <span style={{ fontSize: 15 }}>{dark ? "☀️" : "🌙"}</span>{dark ? "Light" : "Dark"}
     </button>
   );
 
@@ -192,7 +192,7 @@ export default function App() {
           <div style={{ position: "absolute", inset: 0, background: day.gradient[m], opacity: dark ? 0.5 : 0.3 }} />
           {dark && <div style={{ position: "absolute", inset: 0, background: "repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(56,189,248,0.012) 40px, rgba(56,189,248,0.012) 41px), repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(56,189,248,0.012) 40px, rgba(56,189,248,0.012) 41px)", pointerEvents: "none" }} />}
           <div style={{ position: "relative", zIndex: 1, padding: "20px 20px 6px" }}>
-            <button onClick={() => { setVw("home"); setSelDay(null); setSelSlot(null); }} style={{ background: t.togBg, border: `1px solid ${t.bdr}`, color: t.sub, padding: "7px 16px", borderRadius: 10, cursor: "pointer", fontSize: 12, fontFamily: "'JetBrains Mono', monospace" }}>{"\u2190"} Back</button>
+            <button onClick={() => { setVw("home"); setSelDay(null); setSelSlot(null); }} style={{ background: t.togBg, border: `1px solid ${t.bdr}`, color: t.sub, padding: "7px 16px", borderRadius: 10, cursor: "pointer", fontSize: 12, fontFamily: "'JetBrains Mono', monospace" }}>{"←"} Back</button>
           </div>
           <div style={{ position: "relative", zIndex: 1, padding: "8px 24px 24px", textAlign: "center" }}>
             <span style={{ fontSize: 38 }}>{day.icon}</span>
@@ -215,7 +215,7 @@ export default function App() {
                 <div onClick={() => setSelSlot(op ? null : key)} style={{ background: op ? t.surfHov : t.card, border: `1px solid ${op ? `${ac}35` : t.bdr}`, borderRadius: op ? "13px 13px 0 0" : 13, padding: "14px 16px", cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center", transition: "all 0.25s", backdropFilter: "blur(8px)" }}>
                   <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
                     <div onClick={e => { e.stopPropagation(); toggleDone(key); }} style={{ width: 24, height: 24, borderRadius: "50%", border: done[key] ? `2.5px solid ${ac}` : `2px solid ${t.bdr}`, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", background: done[key] ? `${ac}15` : "transparent", transition: "all 0.25s", flexShrink: 0 }}>
-                      {done[key] && <span style={{ color: ac, fontSize: 11, fontWeight: 700 }}>{"\u2713"}</span>}
+                      {done[key] && <span style={{ color: ac, fontSize: 11, fontWeight: 700 }}>{"✓"}</span>}
                     </div>
                     <div>
                       <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 3 }}>
@@ -224,15 +224,15 @@ export default function App() {
                       <div style={{ fontSize: 14.5, fontWeight: 600, color: done[key] ? t.mut : t.txt, textDecoration: done[key] ? "line-through" : "none" }}>{l.title}</div>
                     </div>
                   </div>
-                  <span style={{ color: t.mut, fontSize: 13, transform: op ? "rotate(180deg)" : "rotate(0)", transition: "transform 0.25s", flexShrink: 0 }}>{"\u25BE"}</span>
+                  <span style={{ color: t.mut, fontSize: 13, transform: op ? "rotate(180deg)" : "rotate(0)", transition: "transform 0.25s", flexShrink: 0 }}>{"▾"}</span>
                 </div>
                 {op && (
                   <div style={{ background: t.surfHov, border: `1px solid ${ac}35`, borderTop: "none", borderRadius: "0 0 13px 13px", padding: 22, animation: "ex 0.35s ease", overflow: "hidden", backdropFilter: "blur(8px)" }}>
                     <p style={{ color: t.txt, lineHeight: 1.85, margin: "0 0 18px", fontSize: 14, fontWeight: 300, whiteSpace: "pre-line" }}>{l.content}</p>
                     {[
-                      { label: "\uD83C\uDF0D Real World Analogy", text: l.realWorld, c: dark ? [`rgba(56,189,248,0.05)`,`rgba(56,189,248,0.12)`,`#38bdf8`] : [`rgba(3,105,161,0.04)`,`rgba(3,105,161,0.09)`,`#0369a1`] },
-                      { label: "\uD83C\uDFED BHN / Laravel Example", text: l.bhnExample, c: dark ? [`rgba(74,222,128,0.05)`,`rgba(74,222,128,0.11)`,`#4ade80`] : [`rgba(21,128,61,0.04)`,`rgba(21,128,61,0.09)`,`#15803d`] },
-                      { label: "\uD83E\uDDE0 Memory Trick", text: l.memoryTrick, c: dark ? [`rgba(251,191,36,0.05)`,`rgba(251,191,36,0.12)`,`#fbbf24`] : [`rgba(180,83,9,0.04)`,`rgba(180,83,9,0.1)`,`#b45309`], hl: true },
+                      { label: "🌍 Real World Analogy", text: l.realWorld, c: dark ? [`rgba(56,189,248,0.05)`,`rgba(56,189,248,0.12)`,`#38bdf8`] : [`rgba(3,105,161,0.04)`,`rgba(3,105,161,0.09)`,`#0369a1`] },
+                      { label: "🏭 BHN / Laravel Example", text: l.bhnExample, c: dark ? [`rgba(74,222,128,0.05)`,`rgba(74,222,128,0.11)`,`#4ade80`] : [`rgba(21,128,61,0.04)`,`rgba(21,128,61,0.09)`,`#15803d`] },
+                      { label: "🧠 Memory Trick", text: l.memoryTrick, c: dark ? [`rgba(251,191,36,0.05)`,`rgba(251,191,36,0.12)`,`#fbbf24`] : [`rgba(180,83,9,0.04)`,`rgba(180,83,9,0.1)`,`#b45309`], hl: true },
                     ].map((s, si) => (
                       <div key={si} style={{ background: s.c[0], border: `1px solid ${s.c[1]}`, borderRadius: 11, padding: "13px 16px", marginBottom: si < 2 ? 10 : 0 }}>
                         <div style={{ fontSize: 9.5, color: s.c[2], letterSpacing: 2.5, textTransform: "uppercase", fontFamily: "'JetBrains Mono', monospace", marginBottom: 6 }}>{s.label}</div>

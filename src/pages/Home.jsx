@@ -103,7 +103,7 @@ export default function Home() {
             Masterclass Hub
           </h1>
           <p style={{ fontSize: "clamp(14px, 2.5vw, 17px)", color: t.sub, maxWidth: 500, margin: "0 auto 28px", lineHeight: 1.6 }}>
-            Your personal learning command center.<br />7 masterclasses. One commitment.
+            Your personal learning command center.<br />{masterclasses.length} masterclasses. One commitment.
           </p>
 
           {/* Global progress ring */}
