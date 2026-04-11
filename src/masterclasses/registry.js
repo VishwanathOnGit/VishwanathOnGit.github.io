@@ -107,6 +107,20 @@ const masterclasses = [
     duration: "90 days",
     component: lazy(() => import("./staff_mindset_masterclass.jsx")),
   },
+  {
+    id: "prompt-engineering",
+    path: "/prompt-engineering",
+    title: "Prompt Engineering",
+    subtitle: "From 58/100 to 85+ in 21 Days",
+    icon: "✍️",
+    accent: "#E8A838",
+    accentDark: "#b07a10",
+    gradient: "linear-gradient(135deg, #b07a10 0%, #E8A838 100%)",
+    totalLessons: 21,
+    phases: 3,
+    duration: "21 days",
+    component: lazy(() => import("./prompt_masterclass.jsx")),
+  },
 ];
 
 export default masterclasses;
