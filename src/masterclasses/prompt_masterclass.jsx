@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 
 // ─── DATA ───
 const PHASES = [
@@ -333,11 +333,11 @@ function PhaseNav({ activePhase, setActivePhase }) {
   );
 }
 
-function DayCard({ day, phase, isExpanded, onToggle }) {
+function DayCard({ day, phase, isExpanded, onToggle, isDone, onToggleDone }) {
   return (
     <div style={{
       background: "rgba(255,255,255,0.025)",
-      border: `1px solid ${isExpanded ? phase.color + "44" : "rgba(255,255,255,0.06)"}`,
+      border: `1px solid ${isExpanded ? phase.color + "44" : isDone ? phase.color + "22" : "rgba(255,255,255,0.06)"}`,
       borderRadius: 14,
       overflow: "hidden",
       transition: "all 0.3s ease",
@@ -351,17 +351,19 @@ function DayCard({ day, phase, isExpanded, onToggle }) {
         gap: 14,
         userSelect: "none"
       }}>
-        <div style={{
+        <div onClick={e => { e.stopPropagation(); onToggleDone(); }} style={{
           width: 42, height: 42, borderRadius: 10,
-          background: `${phase.color}18`,
+          background: isDone ? `${phase.color}25` : `${phase.color}18`,
           display: "flex", alignItems: "center", justifyContent: "center",
           fontSize: 14, fontWeight: 800, color: phase.color, flexShrink: 0,
-          fontFamily: "'Outfit', sans-serif"
+          fontFamily: "'Outfit', sans-serif",
+          border: isDone ? `2px solid ${phase.color}66` : "2px solid transparent",
+          transition: "all 0.25s"
         }}>
-          D{day.day}
+          {isDone ? "✓" : `D${day.day}`}
         </div>
         <div style={{ flex: 1 }}>
-          <div style={{ color: "#F0E8DF", fontWeight: 700, fontSize: 15, fontFamily: "'Outfit', sans-serif" }}>{day.title}</div>
+          <div style={{ color: isDone ? "#888" : "#F0E8DF", fontWeight: 700, fontSize: 15, fontFamily: "'Outfit', sans-serif", textDecoration: isDone ? "line-through" : "none", transition: "all 0.25s" }}>{day.title}</div>
           <div style={{ color: "#888", fontSize: 12, marginTop: 2 }}>{day.framework}: {day.frameworkFull}</div>
         </div>
         <span style={{ color: "#666", fontSize: 16, transition: "transform 0.3s", transform: isExpanded ? "rotate(180deg)" : "rotate(0)" }}>▾</span>
@@ -413,6 +415,22 @@ function DayCard({ day, phase, isExpanded, onToggle }) {
               <div style={{ color: "#4ECDC4", fontSize: 11, fontWeight: 700, letterSpacing: 1, marginBottom: 4 }}>TODAY'S EXERCISE</div>
               <div style={{ color: "#D4C9BD", fontSize: 13, lineHeight: 1.6 }}>{day.exercise}</div>
             </div>
+          </div>
+
+          {/* Mark as Done */}
+          <div style={{ marginTop: 16, textAlign: "center" }}>
+            <button
+              onClick={e => { e.stopPropagation(); onToggleDone(); }}
+              style={{
+                background: isDone ? `${phase.color}18` : "rgba(255,255,255,0.04)",
+                border: `1.5px solid ${isDone ? phase.color : "rgba(255,255,255,0.1)"}`,
+                borderRadius: 10, padding: "10px 28px", cursor: "pointer",
+                color: isDone ? phase.color : "#888", fontSize: 13, fontWeight: 700,
+                transition: "all 0.25s", letterSpacing: 0.5
+              }}
+            >
+              {isDone ? "✓ Completed" : "Mark as Done"}
+            </button>
           </div>
         </div>
       )}
@@ -498,11 +516,21 @@ function CheatSheet() {
 export default function PromptMasterclass() {
   const [activePhase, setActivePhase] = useState(1);
   const [expandedDays, setExpandedDays] = useState({});
+  const [done, setDone] = useState(() => {
+    try { return JSON.parse(localStorage.getItem("masterclass_prompt-engineering_done")) || {}; }
+    catch { return {}; }
+  });
+
+  useEffect(() => {
+    localStorage.setItem("masterclass_prompt-engineering_done", JSON.stringify(done));
+  }, [done]);
 
   const toggleDay = (dayNum) => {
     setExpandedDays(prev => ({ ...prev, [dayNum]: !prev[dayNum] }));
   };
+  const toggleDone = (dayNum) => setDone(prev => ({ ...prev, [dayNum]: !prev[dayNum] }));
 
+  const doneCount = Object.values(done).filter(Boolean).length;
   const currentPhase = PHASES.find(p => p.id === activePhase);
 
   return (
@@ -527,6 +555,9 @@ export default function PromptMasterclass() {
         <div style={{ fontSize: 12, color: "#777", marginTop: 6 }}>
           Curated from latest 2026 research + your actual prompting patterns
         </div>
+        <div style={{ fontSize: 13, color: doneCount === 21 ? "#4ECDC4" : "#888", marginTop: 8, fontWeight: 600 }}>
+          {doneCount}/21 days completed {doneCount === 21 ? "🎉" : ""}
+        </div>
       </div>
 
       {/* Progress bar */}
@@ -537,7 +568,7 @@ export default function PromptMasterclass() {
         {ALL_DAYS.map(d => (
           <div key={d.day} title={`Day ${d.day}: ${d.title}`} style={{
             width: 20, height: 6, borderRadius: 3,
-            background: expandedDays[d.day] ? d.phase.color : `${d.phase.color}30`,
+            background: done[d.day] ? d.phase.color : `${d.phase.color}30`,
             transition: "all 0.3s",
             cursor: "pointer"
           }} onClick={() => { setActivePhase(d.phase.id); toggleDay(d.day); }} />
@@ -567,6 +598,8 @@ export default function PromptMasterclass() {
               phase={currentPhase}
               isExpanded={expandedDays[day.day]}
               onToggle={() => toggleDay(day.day)}
+              isDone={!!done[day.day]}
+              onToggleDone={() => toggleDone(day.day)}
             />
           ))}
         </div>

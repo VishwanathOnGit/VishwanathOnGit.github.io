@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useEffect } from "react";
 
 const PHASES = [
   {
@@ -195,23 +195,25 @@ function PhaseSelector({ active, setActive }) {
   );
 }
 
-function DayItem({ d, phase, isOpen, toggle }) {
+function DayItem({ d, phase, isOpen, toggle, isDone, onToggleDone }) {
   return (
     <div style={{
-      background: "rgba(255,255,255,0.02)", border: `1px solid ${isOpen ? phase.color + "33" : "rgba(255,255,255,0.05)"}`,
+      background: "rgba(255,255,255,0.02)", border: `1px solid ${isOpen ? phase.color + "33" : isDone ? phase.color + "22" : "rgba(255,255,255,0.05)"}`,
       borderRadius: 12, overflow: "hidden", marginBottom: 8, transition: "all 0.3s"
     }}>
       <div onClick={toggle} style={{ padding: "14px 16px", cursor: "pointer", display: "flex", alignItems: "center", gap: 12, userSelect: "none" }}>
-        <div style={{
-          width: 36, height: 36, borderRadius: 8, background: `${phase.color}15`,
+        <div onClick={e => { e.stopPropagation(); onToggleDone(); }} style={{
+          width: 36, height: 36, borderRadius: 8, background: isDone ? `${phase.color}25` : `${phase.color}15`,
           display: "flex", alignItems: "center", justifyContent: "center",
           fontSize: 12, fontWeight: 800, color: phase.color, flexShrink: 0,
-          fontFamily: "'Outfit', sans-serif"
+          fontFamily: "'Outfit', sans-serif",
+          border: isDone ? `2px solid ${phase.color}66` : "2px solid transparent",
+          transition: "all 0.25s"
         }}>
-          {d.day}
+          {isDone ? "✓" : d.day}
         </div>
         <div style={{ flex: 1 }}>
-          <div style={{ color: "#F0E8DF", fontWeight: 700, fontSize: 14, fontFamily: "'Outfit', sans-serif" }}>{d.title}</div>
+          <div style={{ color: isDone ? "#777" : "#F0E8DF", fontWeight: 700, fontSize: 14, fontFamily: "'Outfit', sans-serif", textDecoration: isDone ? "line-through" : "none", transition: "all 0.25s" }}>{d.title}</div>
         </div>
         <span style={{ color: "#555", fontSize: 14, transition: "transform 0.3s", transform: isOpen ? "rotate(180deg)" : "rotate(0)" }}>▾</span>
       </div>
@@ -225,6 +227,20 @@ function DayItem({ d, phase, isOpen, toggle }) {
             <span style={{ fontSize: 14, flexShrink: 0 }}>💡</span>
             <div style={{ color: "#C4B8AC", fontSize: 12.5, lineHeight: 1.65, fontStyle: "italic" }}>{d.insight}</div>
           </div>
+          <div style={{ marginTop: 14, textAlign: "center" }}>
+            <button
+              onClick={e => { e.stopPropagation(); onToggleDone(); }}
+              style={{
+                background: isDone ? `${phase.color}18` : "rgba(255,255,255,0.04)",
+                border: `1.5px solid ${isDone ? phase.color : "rgba(255,255,255,0.1)"}`,
+                borderRadius: 10, padding: "10px 28px", cursor: "pointer",
+                color: isDone ? phase.color : "#888", fontSize: 13, fontWeight: 700,
+                transition: "all 0.25s", letterSpacing: 0.5
+              }}
+            >
+              {isDone ? "✓ Completed" : "Mark as Done"}
+            </button>
+          </div>
         </div>
       )}
     </div>
@@ -234,7 +250,18 @@ function DayItem({ d, phase, isOpen, toggle }) {
 export default function YTMasterclass() {
   const [activePhase, setActivePhase] = useState(1);
   const [openDays, setOpenDays] = useState({});
+  const [done, setDone] = useState(() => {
+    try { return JSON.parse(localStorage.getItem("masterclass_vishwa-motovlogs_done")) || {}; }
+    catch { return {}; }
+  });
+
+  useEffect(() => {
+    localStorage.setItem("masterclass_vishwa-motovlogs_done", JSON.stringify(done));
+  }, [done]);
+
   const toggle = (d) => setOpenDays(prev => ({ ...prev, [d]: !prev[d] }));
+  const toggleDone = (d) => setDone(prev => ({ ...prev, [d]: !prev[d] }));
+  const doneCount = Object.values(done).filter(Boolean).length;
   const phase = PHASES.find(p => p.id === activePhase);
 
   return (
@@ -248,13 +275,16 @@ export default function YTMasterclass() {
         </h1>
         <div style={{ fontSize: 13, color: "#E8A838", fontWeight: 600 }}>Grow Your Channel. Grow Yourself.</div>
         <div style={{ fontSize: 11, color: "#666", marginTop: 4 }}>6 Phases | 90 Days | Curated from 2026 YouTube Research + Your Journey</div>
+        <div style={{ fontSize: 12, color: doneCount === 90 ? "#4ECDC4" : "#888", marginTop: 6, fontWeight: 600 }}>
+          {doneCount}/90 days completed {doneCount === 90 ? "🎉" : ""}
+        </div>
       </div>
 
       <div style={{ display: "flex", gap: 2, justifyContent: "center", margin: "18px auto", maxWidth: 540, flexWrap: "wrap" }}>
         {ALL_DAYS.map(d => (
           <div key={d.day} title={`Day ${d.day}: ${d.title}`} style={{
             width: 5, height: 5, borderRadius: 2,
-            background: openDays[d.day] ? d.phase.color : `${d.phase.color}25`,
+            background: done[d.day] ? d.phase.color : `${d.phase.color}25`,
             cursor: "pointer", transition: "all 0.2s"
           }} onClick={() => { setActivePhase(d.phase.id); toggle(d.day); }} />
         ))}
@@ -286,7 +316,7 @@ export default function YTMasterclass() {
                 {w.title}
               </div>
               {w.days.map(d => (
-                <DayItem key={d.day} d={d} phase={phase} isOpen={openDays[d.day]} toggle={() => toggle(d.day)} />
+                <DayItem key={d.day} d={d} phase={phase} isOpen={openDays[d.day]} toggle={() => toggle(d.day)} isDone={!!done[d.day]} onToggleDone={() => toggleDone(d.day)} />
               ))}
             </div>
           ))}
