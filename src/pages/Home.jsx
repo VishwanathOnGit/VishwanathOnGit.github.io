@@ -137,6 +137,33 @@ export default function Home() {
           <p style={{ fontSize: 14, color: t.mut, fontStyle: "italic", maxWidth: 480, margin: "0 auto" }}>"{quote}"</p>
         </div>
 
+        {/* 90-Day Lab link */}
+        <div style={{ textAlign: "center", marginBottom: 24, animation: "fadeUp .6s ease .22s both" }}>
+          <a
+            href="/masterclassLab.html"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              padding: "10px 20px",
+              borderRadius: 999,
+              background: dark ? "rgba(56,189,248,0.08)" : "rgba(37,99,235,0.07)",
+              border: `1px solid ${dark ? "rgba(56,189,248,0.25)" : "rgba(37,99,235,0.2)"}`,
+              color: dark ? "#38bdf8" : "#1d4ed8",
+              fontSize: 13,
+              fontWeight: 600,
+              textDecoration: "none",
+              transition: "all .2s",
+            }}
+            onMouseEnter={e => e.currentTarget.style.background = dark ? "rgba(56,189,248,0.15)" : "rgba(37,99,235,0.13)"}
+            onMouseLeave={e => e.currentTarget.style.background = dark ? "rgba(56,189,248,0.08)" : "rgba(37,99,235,0.07)"}
+          >
+            <span style={{ fontSize: 16 }}>🗓</span>
+            90-Day Mastery Lab
+            <span style={{ opacity: 0.6 }}>→</span>
+          </a>
+        </div>
+
         {/* Continue where you left off */}
         {lastMc && (
           <div
